@@ -1,0 +1,184 @@
+.container {
+  display: flex;
+  background-color: #161719;
+  color: #a3a8ae;
+  position: relative;
+  box-sizing: border-box;
+  height: initial;
+  overflow: hidden;
+  cursor: default;
+  -webkit-user-select: none;
+  min-width: 100px;
+  width: 200px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+.tree_view_scroller {
+  border-image: none;
+  border-bottom: 1px solid #111314;
+  order: 0;
+  border-width: 0 0 1px 0;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+  overflow: auto;
+}
+
+.tree_view_resizer {
+  right: -5px;
+  width: 8px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  cursor: col-resize;
+  z-index: 3;
+  -webkit-user-select: none;
+}
+
+.tree_list {
+  font-size: 1em;
+  flex-grow: 1;
+  flex-shrink: 0;
+  isolation: isolate;
+  min-width: -webkit-min-content;
+  min-height: 100%;
+  padding-left: 5px;
+  padding-right: 10px;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  cursor: default;
+}
+
+.tree_list::before {
+  margin-top: 0;
+  content: "";
+  position: fixed;
+  pointer-events: none;
+  z-index: 1;
+  margin-top: 0.5em;
+  margin-left: -5px;
+  height: 3em;
+  width: 2px;
+  background: #52a8ff;
+  opacity: 0;
+  transition: opacity .16s;
+}
+
+.tree_list_item {
+  padding-top: 0;
+}
+
+.tree_list_item::before {
+  border-top: none;
+  height: 3em;
+  border-top: 1px solid transparent;
+  background-clip: padding-box;
+  content: '';
+  position: absolute;
+}
+
+.tree_list_item_header {
+  line-height: 2em;
+  white-space: nowrap;
+  position: relative;
+
+  & span {
+    line-height: 3em;
+    display: inline-block;
+  }
+}
+
+.tree_list_item_header::before {
+  text-align: center;
+  position: relative;
+  top: -1px;
+  margin-right: 5px;
+  font-family: 'octicons';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 12px;
+  width: 12px;
+  height: 12px;
+  content: "\f0a3";
+}
+
+.tree_list_item_entries {
+  position: static;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  cursor: default;
+
+  & li {
+    color: #73c990;
+    padding-left: 17px;
+  }
+
+  & li::before {
+    content: '';
+    position: absolute;
+  }
+}
+
+.tree_list_item_entries_repo::before {
+  top: initial;
+  line-height: inherit;
+  height: inherit;
+  vertical-align: top;
+  margin-right: 5px;
+  position: relative;
+  top: 1px;
+  margin-right: 5px;
+  font-family: 'octicons';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f001";
+}
+
+.tree_list_item_entries_notebook::before{
+  font-family: 'octicons';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f011";
+}
+
+.tree_list_item_entries_collection::before{
+  font-family: 'octicons';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f016";
+}
+
+.tree_list_item_leaf {
+  margin-left: 17px;
+}

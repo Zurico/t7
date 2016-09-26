@@ -1,0 +1,140 @@
+:root {
+  --overlayBgColor: rgba(12, 13, 14, 0.5);
+  --containerBgColor: #1d1f21;
+  --listBgColor: #222426;
+  --listBorderColor: 1px solid #111314;
+  --listItemColor: #d9dbde;
+  --listItemSelectedBgColor: #303337;
+  --listItemActivedIcon: "\f03a";
+  --listItemActivedIconColor: #73c990;
+  --inputTextColor: #d9dbde;
+  --inputTextBgColor: rgba(0, 0, 0, 0.6);
+  --inputFocusBorderColor: 2px solid rgba(115, 201, 144, 0.7);
+  --inputFocusTextColor: rgba(115, 201, 144, 0.7);
+  --inputFocusCaretColor: #d9dbde;
+  --inputTextSelectedColor: rgba(115, 201, 144, 0.3);
+}
+
+.modal {
+
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.overlay {
+  position: relative;
+  width: 100%;
+  max-width: 50em;
+  margin: 0 auto;
+  left: initial;
+  z-index: 9999;
+  background-color: transparent;
+  padding: 0.75em;
+  top: 0;
+  border-top: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.overlay:before {
+
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  background-color: var(--containerBgColor);
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0 0 6px 6px;
+  box-shadow: 0 6px 12px -2px rgba(0, 0, 0, 0.4);
+
+}
+
+.overlay:after{
+
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  background: var(--overlayBgColor);
+  backface-visibility: hidden;
+  -webkit-animation: overlay-fade 0.1s cubic-bezier(0.215, 0.61, 0.355, 1);
+
+}
+
+.list_group {
+
+  border: var(--listBorderColor);
+  background-color: var(--listBgColor);
+  position: relative;
+  overflow-y: auto;
+  max-height: 312px;
+  margin: 10px 0 0 0;
+  padding: 0;
+  list-style: none;
+  cursor: default;
+
+  & li {
+    font-weight: normal;
+    color: var(--listItemColor);
+    padding: 0.75em 1em;
+    line-height: 2em;
+    border-bottom: 1px solid #111314;
+  }
+
+  & li.selected {
+    background-color: var(--listItemSelectedBgColor);
+  }
+
+  & li.actived:before {
+
+    margin-right: 0.45454545em;
+    color: var(--listItemActivedIconColor);
+    font-family: 'octicons';
+    font-weight: normal;
+    font-style: normal;
+    display: inline-block;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    text-decoration: none;
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+    content: var(--listItemActivedIcon);
+  }
+}
+
+.text_editor {
+  position: relative;
+  display: inline-block;
+  border-radius: 4px;
+  border: 2px solid transparent;
+  padding: 5px;
+  font-size: 12px;
+  width: 100%;
+  margin: 0;
+  height: 2.5em;
+  cursor: pointer;
+  outline: none;
+  color: var(--inputTextColor);
+  background-color: var(--inputTextBgColor);
+  cursor: -webkit-image-set(url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAAL0lEQVQoz2NgCD3x//9/BhBYBWdhgFVAiVW4JBFKGIa4AqD0//9D3pt4I4tAdAMAHTQ/j5Zom30AAAAASUVORK5CYII=') 1x) 5 8, text;
+}
+
+.text_editor:focus {
+  border: var(--inputFocusBorderColor);
+  color: var(--inputFocusTextColor);
+  -webkit-text-fill-color: var(--inputFocusCaretColor);
+}
+
+.text_editor::selection {
+  background: var(--inputTextSelectedColor);
+}

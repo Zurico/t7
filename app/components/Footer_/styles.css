@@ -1,0 +1,10 @@
+:root {
+  --bgColor: #161719;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  background-color: var(--bgColor);
+}
