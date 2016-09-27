@@ -6,6 +6,7 @@
   --runColor: #73c990;
   --syncColor: #6494ed;
   --updateColor: #6494ed;
+  --height: 3.0em;
 }
 
 .footer {
@@ -13,7 +14,8 @@
   justify-content: space-between;
   padding: 0;
   background-color: var(--bgColor);
-  height: 2.5em;
+  height: var(--height);
+  border-top: 1px solid #27292c; /*rgba(115, 170, 100, 0.3);*/
 }
 
 .status_bar{
@@ -26,7 +28,7 @@
   justify-content: space-between;
   padding: 0 0.75em;
   width: 100%;
-  line-height: 2.5em;
+  line-height: var(--height);
 }
 
 .status_bar_left{
