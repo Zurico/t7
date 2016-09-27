@@ -15,13 +15,20 @@ function ResourcesTree() {
             <ol className={styles.tree_list_item_entries}>
               <li>
                 <div className={styles.tree_list_item_header}>
-                  <span className={styles.tree_list_item_entries_collection}>Collection 1</span>
+                  <span className={styles.tree_list_item_entries_tenant}>Tenant 1</span>
                 </div>
                 <ol className={styles.tree_list_item_entries}>
-                  <li className={styles.tree_list_item_leaf}>
-                    <span className={styles.tree_list_item_entries_notebook}>
-                      Notebook_1.js
-                    </span>
+                  <li>
+                    <div className={styles.tree_list_item_header}>
+                      <span className={styles.tree_list_item_entries_collection}>Collection 1</span>
+                    </div>
+                    <ol className={styles.tree_list_item_entries}>
+                      <li className={`${styles.tree_list_item_leaf} ${styles.selected}`}>
+                        <span className={styles.tree_list_item_entries_notebook}>
+                          Notebook_1.js
+                        </span>
+                      </li>
+                    </ol>
                   </li>
                 </ol>
               </li>

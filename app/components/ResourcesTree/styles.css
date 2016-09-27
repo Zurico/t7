@@ -1,3 +1,11 @@
+:root {
+
+    --icon-location: "\f001";
+    --icon-tenant: "\f016";
+    --icon-collection: "\f016";
+    --icon-resource: "\f011";
+}
+
 .container {
   display: flex;
   background-color: #161719;
@@ -13,6 +21,7 @@
   z-index: 2;
   display: flex;
   flex-direction: column;
+  padding: 10px;
 }
 
 .tree_view_scroller {
@@ -88,7 +97,7 @@
   position: relative;
 
   & span {
-    line-height: 3em;
+    line-height: 2.5em;
     display: inline-block;
   }
 }
@@ -102,7 +111,6 @@
   font-weight: normal;
   font-style: normal;
   display: inline-block;
-  line-height: 1;
   -webkit-font-smoothing: antialiased;
   text-decoration: none;
   font-size: 12px;
@@ -130,11 +138,6 @@
 }
 
 .tree_list_item_entries_repo::before {
-  top: initial;
-  line-height: inherit;
-  height: inherit;
-  vertical-align: top;
-  margin-right: 5px;
   position: relative;
   top: 1px;
   margin-right: 5px;
@@ -142,43 +145,70 @@
   font-weight: normal;
   font-style: normal;
   display: inline-block;
-  line-height: 1;
   -webkit-font-smoothing: antialiased;
   text-decoration: none;
   font-size: 16px;
   width: 16px;
   height: 16px;
-  content: "\f001";
+  content: var(--icon-location);
 }
 
-.tree_list_item_entries_notebook::before{
+.tree_list_item_entries_notebook::before {
+  margin-right: 5px;
   font-family: 'octicons';
   font-weight: normal;
   font-style: normal;
   display: inline-block;
-  line-height: 1;
   -webkit-font-smoothing: antialiased;
   text-decoration: none;
   font-size: 16px;
   width: 16px;
   height: 16px;
-  content: "\f011";
+  content: var(--icon-resource);
 }
 
-.tree_list_item_entries_collection::before{
+.tree_list_item_entries_collection::before {
+  margin-right: 5px;
   font-family: 'octicons';
   font-weight: normal;
   font-style: normal;
   display: inline-block;
-  line-height: 1;
   -webkit-font-smoothing: antialiased;
   text-decoration: none;
   font-size: 16px;
   width: 16px;
   height: 16px;
-  content: "\f016";
+  content: var(--icon-collection);
+}
+
+.tree_list_item_entries_tenant::before {
+  margin-right: 5px;
+  font-family: 'octicons';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: var(--icon-tenant);
 }
 
 .tree_list_item_leaf {
   margin-left: 17px;
+  color: #e2c08d;
+}
+
+.selected::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 25px;
+  background-color: #27292c;
+}
+
+.selected * {
+  position: relative;
 }
