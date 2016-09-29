@@ -32,8 +32,8 @@ function App(props) {
       />
         <article className={styles.workspace}>
           <ResourcesTree />
-          {/*React.Children.toArray(props.children)*/}
-          <Tabs>{React.Children.toArray(props.children)}</ Tabs>
+          {React.Children.toArray(props.children)}
+          {/*<Tabs>{React.Children.toArray(props.children)}</ Tabs>*/}
         </article>
         <Footer />
         <FuzzyFinder />
