@@ -1,7 +1,7 @@
 import React from 'react';
 
+import Tip from 'components/Tip';
 import messages from './messages';
-import A from 'components/A';
 import styles from './styles.css';
 import { FormattedMessage } from 'react-intl';
 import LocaleToggle from 'containers/LocaleToggle';
@@ -15,6 +15,7 @@ function Footer() {
           <span>No Notebooks</span>
           <span>0:0</span>
           <span>MIT</span>
+          <Tip message={"This is a tip!!"} />
         </div>
         <div className={styles.status_bar_right}>
           {/*<span className={styles.status_bar_issue}><Octicon name="bug"/> Bugs</span>*}
