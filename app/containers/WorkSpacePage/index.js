@@ -9,7 +9,8 @@ import Helmet from 'react-helmet';
 import styles from './styles.css';
 
 // https://github.com/primer/octicons/tree/v2.1.2
-import Octicon from 'react-octicon'
+import Octicon from 'react-octicon';
+import Logo from 'components/Logo';
 
 export class WorkSpacePage extends React.Component {
 
@@ -24,12 +25,15 @@ export class WorkSpacePage extends React.Component {
           ]}
         />
         <div className={styles.messages_container}>
-          <ul className={styles.messages_list}>
-            <li className={styles.message}>
-              You can focus the Tree View with
-              <span className={styles.keystroke}>⇧⌘P</span>
-            </li>
-          </ul>
+          <div className={styles.messages_centered}>
+            <Logo />
+            <ul className={styles.messages_list}>
+              <li className={styles.message}>
+                You can focus the Tree View with
+                <span className={styles.keystroke}>⇧⌘P</span>
+              </li>
+            </ul>
+          </div>
         </div>
       </article>
     );

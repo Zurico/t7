@@ -6,7 +6,7 @@
 
 .messages_container {
   display: block;
-  pointer-events: none;
+  /*pointer-events: none;*/
   position: absolute;
   top: 0;
   left: 0;
@@ -15,8 +15,10 @@
   overflow: hidden;
 }
 
-.messages_list {
+.messages_centered {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   position: absolute;
   top: 0;
   left: 0;
@@ -31,6 +33,10 @@
   cursor: default;
   font-weight: bold;
   color: rgba(163, 168, 174, 0.2);
+}
+
+.messages_list{
+  padding: 0;
 }
 
 .message {
@@ -48,4 +54,9 @@
   border-radius: 9px;
   font-family: "Helvetica Neue", Arial, sans-serif;
   margin-left: 15px;
+}
+
+.keystroke:hover {
+  transition: color 1s ease;
+  color:rgba(163, 168, 174, 0.5);
 }
