@@ -15,7 +15,6 @@ function Footer() {
           <span>No Notebooks</span>
           <span>0:0</span>
           <span>MIT</span>
-          <Tip message={"This is a tip!!"} />
         </div>
         <div className={styles.status_bar_right}>
           {/*<span className={styles.status_bar_issue}><Octicon name="bug"/> Bugs</span>*}

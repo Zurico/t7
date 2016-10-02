@@ -3,20 +3,35 @@
 }
 
 .tip_container {
-  position: relative;
-  top: -32px;
+  position: absolute;
   outline: none;
-  left: 165px;
+  z-index: 2;
+  width: 16px;
+  height: 16px;
 }
 
 .tip_link{
-
-  animation: scale 3s ease-in-out infinite alternate;
 
   & a {
     color: rgb(226, 192, 141);
     text-decoration: none;
   }
+}
+
+.animate {
+  opacity:0;
+  opacity: 1 \9; /*just in case ie*/
+  -webkit-animation:fadein 1s ease-in 1, dance 2s ease-in-out infinite alternate;
+  -moz-animation:fadein 1s ease-in 1, dance 2s ease-in-out infinite alternate;
+  animation:fadein 1s ease-in 1, dance 2s ease-in-out infinite alternate;
+
+  -webkit-animation-fill-mode:forwards;
+  -moz-animation-fill-mode:forwards;
+  animation-fill-mode:forwards;
+
+  -webkit-animation-delay: 3s;
+  -moz-animation-delay: 3s;
+  animation-delay: 3s;
 }
 
 .overlay {
@@ -29,6 +44,7 @@
   transition: opacity 500ms;
   visibility: hidden;
   opacity: 0;
+  z-index: 3;
 }
 .overlay:target {
   visibility: visible;
@@ -77,14 +93,23 @@
   }
 }
 
-@keyframes scale {
+@keyframes dance {
   0% {
-    transform: scale(1);
+    transform: translate(0, 0);
   }
   50% {
-    transform: scale(1.04);
+    transform: translate(2px, 0);
   }
   100% {
-    transform: scale(1);
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

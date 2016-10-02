@@ -18,6 +18,7 @@ import styles from './styles.css';
 import ResourcesTree from 'components/ResourcesTree';
 import Tabs from 'components/Tabs';
 import Footer from 'components/Footer';
+import HelperTour from 'components/HelperTour';
 import FuzzyFinder from 'components/FuzzyFinder';
 
 function App(props) {
@@ -37,6 +38,7 @@ function App(props) {
         </article>
         <Footer />
         <FuzzyFinder />
+        <HelperTour />
     </section>
   );
 }
