@@ -13,20 +13,13 @@ function Tip(props) {
   console.log('hello');
 
   return (
-    <div className={`${styles.tip_container} ${props.className}`}>
-      <div className={`${styles.tip_link} ${styles.animate}`}>
-        <a href={`#${randID}`}><Octicon name="unverified"/></a>
+    <div className={`${styles.wrapper} ${props.className}`}>
+      <div className={styles.animate}>
+        <Octicon name="unverified"/>
       </div>
-      <div id={randID} className={styles.overlay}>
-      	<div className={styles.popup}>
-      		<h2>Here i am</h2>
-      		<a className={styles.close} href="#">&times;</a>
-      		<div className={styles.content}>
-      			{props.message}
-      		</div>
-      	</div>
+      <div className={styles.tooltip}>
+        {props.message}
       </div>
-
     </div>
   );
 }
