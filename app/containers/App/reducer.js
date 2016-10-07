@@ -19,12 +19,33 @@ import { fromJS } from 'immutable';
 
 // The initial state of the App
 const initialState = fromJS({
-  loading: false,
-  error: false,
-  currentUser: false,
-  userData: fromJS({
-    repositories: false,
-  }),
+  'settings' : {
+    'language': 'en',
+    'theme': 'default'
+  },
+  'session': {
+    'id': '',
+    'last_open': new Date()
+  },
+  'valo': {
+    'localhost:8888':{
+      'talo':{
+        'samples': [{'title': 'Notebook1', 'extension': 'js', 'content': ''}]
+      }
+    }
+  },
+  'user': {},
+  'app': {
+    'license': 'MIT',
+    'loading': false,
+    'error': false
+  }
+  // loading: false,
+  // error: false,
+  // currentUser: false,
+  // userData: fromJS({
+  //   repositories: false,
+  // }),
 });
 
 function appReducer(state = initialState, action) {

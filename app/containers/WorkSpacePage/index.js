@@ -29,8 +29,8 @@ export class WorkSpacePage extends React.Component {
             <Logo />
             <ul className={styles.messages_list}>
               <li className={styles.message}>
-                You can focus the Tree View with
-                <span className={styles.keystroke}>⇧⌘P</span>
+                Discover all you can do with
+                <span className={styles.keystroke}>⌘H</span>
               </li>
             </ul>
           </div>

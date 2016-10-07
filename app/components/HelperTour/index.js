@@ -8,9 +8,9 @@ import { FormattedMessage } from 'react-intl';
 function HelperTour() {
   return (
     <div className={styles.wrapper}>
-      <Tip className={styles.tree} message={"This is a tip tree!!"} />
-      <Tip className={styles.footer_left} message={"This is a tip footer left!!"} />
-      <Tip className={styles.footer_right} message={"This is a tip footer right!!"} />
+      <Tip className={styles.tree} message={"Use the options up"} direction="up" />
+      <Tip className={styles.footer_left} message={"Use the options down"} direction="down" />
+      <Tip className={styles.footer_right} message={"Use the options below to change the application language, report a bug or syncronice your notebooks"} direction="left" />
     </div>
   );
 }

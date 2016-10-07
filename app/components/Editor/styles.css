@@ -1,0 +1,15 @@
+:root {
+  --bgColor: #161719;
+}
+
+.editor{
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  /*font-size: 12px;*/
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+
+}

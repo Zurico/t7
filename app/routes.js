@@ -30,6 +30,28 @@ export default function createRoutes(store) {
           .catch(errorLoading);
       }
     },
+    {
+      path: '/notebook',
+      name: 'notebook',
+      // Remove redirection in line below when setting a default notebook page
+      // onEnter: (nextState, replace) => replace('/notebook/js'),
+      getComponent(nextState, cb) {
+        System.import('containers/NotebookPage')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+      childRoutes: [
+        {
+          path: '/notebook/js',
+          name: 'notebook_js',
+          getComponent(nextState, cb) {
+            System.import('containers/NotebookPageJS')
+              .then(loadModule(cb))
+              .catch(errorLoading);
+          },
+        }
+      ]
+    },
     // {
     //   path: '/',
     //   name: 'home',
