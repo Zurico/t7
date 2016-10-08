@@ -15,9 +15,11 @@
   --inputTextSelectedColor: rgba(115, 201, 144, 0.3);
 }
 
-.modal {
-
+.hidden {
   display: none;
+}
+
+.modal {
   position: absolute;
   top: 0;
   left: 0;
@@ -85,9 +87,10 @@
   & li {
     font-weight: normal;
     color: var(--listItemColor);
-    padding: 0.75em 1em;
+    padding: 12px 1em;
     line-height: 2em;
     border-bottom: 1px solid #111314;
+    -webkit-user-select: none;
   }
 
   & li.selected {

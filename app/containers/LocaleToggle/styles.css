@@ -1,3 +1,7 @@
-.localeToggle {
-  padding: 2px;
+:root {
+  --langColor: inherit;
+}
+
+.status_bar_lang{
+  color: var(--langColor);
 }

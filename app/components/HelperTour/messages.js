@@ -6,12 +6,16 @@
 import { defineMessages } from 'react-intl';
 
 export default defineMessages({
-  licenseMessage: {
-    id: 'boilerplate.components.Footer.license.message',
-    defaultMessage: 'This project is licensed under the MIT license.',
+  treeMessage: {
+    id: 'talo.components.HelperTour.tree.message',
+    defaultMessage: 'Use the options up',
   },
-  authorMessage: {
-    id: 'boilerplate.components.Footer.author.message',
-    defaultMessage: `Made with love by {author}.`,
+  footerLeftMessage: {
+    id: 'talo.components.HelperTour.footer.left.message',
+    defaultMessage: 'Use the options down',
   },
+  footerRightMessage: {
+    id: 'talo.components.HelperTour.footer.right.message',
+    defaultMessage: 'Use the options below to change the application language, report a bug or syncronice your notebooks',
+  }
 });

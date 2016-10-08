@@ -1,5 +1,20 @@
 [
   {
+    "id": "talo.components.HelperTour.tree.message",
+    "defaultMessage": "de",
+    "message": ""
+  },
+  {
+    "id": "talo.components.HelperTour.footer.left.message",
+    "defaultMessage": "de",
+    "message": ""
+  },
+  {
+    "id": "talo.components.HelperTour.footer.right.message",
+    "defaultMessage": "de",
+    "message": ""
+  },
+  {
     "id": "app.components.LocaleToggle.de",
     "defaultMessage": "de",
     "message": ""

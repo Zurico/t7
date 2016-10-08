@@ -1,6 +1,6 @@
 import React from 'react';
 
-import messages from './messages';
+import { FormattedMessage } from 'react-intl';
 import styles from './styles.css';
 import Octicon from 'react-octicon';
 
@@ -14,14 +14,17 @@ function Tip(props) {
         <Octicon name="unverified"/>
       </div>
       <div className={`${styles.tooltip} ${styles[directionClass]}`}>
-        {props.message}
+        <FormattedMessage {...props.message} />
       </div>
     </div>
   );
 }
 
 Tip.propTypes = {
-  message: React.PropTypes.string
+  message: React.PropTypes.shape({
+    id: React.PropTypes.string,
+    defaultMessage: React.PropTypes.string
+  })
 };
 
 export default Tip;
