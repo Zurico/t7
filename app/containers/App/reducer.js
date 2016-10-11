@@ -18,7 +18,7 @@ import {
 import { fromJS } from 'immutable';
 
 // The initial state of the App
-const initialState = fromJS({
+const initialState = {
   'settings' : {
     'language': 'en',
     'theme': 'default'
@@ -30,9 +30,16 @@ const initialState = fromJS({
   'valo': {
     'localhost:8888':{
       'talo':{
-        'samples': [{'title': 'Notebook1', 'extension': 'js', 'content': ''}]
+        'samples': [{'title': 'Notebook_1', 'ext': 'js', 'content': ''}, {'title': 'Notebook_2', 'ext': 'js', 'content': ''}],
+        'samples2': [{'title': 'Notebook_1', 'ext': 'js', 'content': ''}],
+        'samples3': [],
+      },
+      'talo2':{},
+      'talo3': {
+        'samples2': [{'title': 'Notebook_1', 'ext': 'js', 'content': ''}]
       }
-    }
+    },
+    '192.168.32.14:9898':{}
   },
   'user': {},
   'app': {
@@ -40,30 +47,24 @@ const initialState = fromJS({
     'loading': false,
     'error': false
   }
-  // loading: false,
-  // error: false,
-  // currentUser: false,
-  // userData: fromJS({
-  //   repositories: false,
-  // }),
-});
+};
 
 function appReducer(state = initialState, action) {
   switch (action.type) {
-    case LOAD_REPOS:
-      return state
-        .set('loading', true)
-        .set('error', false)
-        .setIn(['userData', 'repositories'], false);
-    case LOAD_REPOS_SUCCESS:
-      return state
-        .setIn(['userData', 'repositories'], action.repos)
-        .set('loading', false)
-        .set('currentUser', action.username);
-    case LOAD_REPOS_ERROR:
-      return state
-        .set('error', action.error)
-        .set('loading', false);
+    // case LOAD_REPOS:
+    //   return state
+    //     .set('loading', true)
+    //     .set('error', false)
+    //     .setIn(['userData', 'repositories'], false);
+    // case LOAD_REPOS_SUCCESS:
+    //   return state
+    //     .setIn(['userData', 'repositories'], action.repos)
+    //     .set('loading', false)
+    //     .set('currentUser', action.username);
+    // case LOAD_REPOS_ERROR:
+    //   return state
+    //     .set('error', action.error)
+    //     .set('loading', false);
     default:
       return state;
   }

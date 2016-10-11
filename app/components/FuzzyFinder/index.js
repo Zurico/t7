@@ -30,7 +30,7 @@ class FuzzyFinder extends React.Component {
   }
 
   filter(item){
-    return item.title.toLowerCase().includes(this.state.filter.toLowerCase());
+    return this.context.intl.formatMessage({id:item.title}).toLowerCase().includes(this.state.filter.toLowerCase());
   }
 
   updateFilter(event){
@@ -119,5 +119,9 @@ class FuzzyFinder extends React.Component {
   }
 
 }
+
+FuzzyFinder.contextTypes = {
+ intl: React.PropTypes.object.isRequired
+};
 
 export default mouseTrap(FuzzyFinder);

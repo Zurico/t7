@@ -48,6 +48,10 @@
   -webkit-user-select: none;
 }
 
+.tree_wrapper {
+  margin-bottom: 5px;
+}
+
 .tree_list {
   outline: none;
   font-size: 1em;
