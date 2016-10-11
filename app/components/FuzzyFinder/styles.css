@@ -97,6 +97,12 @@
     background-color: var(--listItemSelectedBgColor);
   }
 
+  & li.no_results {
+    background-color: transparent;
+    color: inherit;
+    border: none;
+  }
+
   & li.actived:before {
 
     margin-right: 0.45454545em;

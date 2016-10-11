@@ -7,18 +7,23 @@
 import { addLocaleData } from 'react-intl';
 
 import enLocaleData from 'react-intl/locale-data/en';
-import deLocaleData from 'react-intl/locale-data/de';
+import esLocaleData from 'react-intl/locale-data/es';
 
 addLocaleData(enLocaleData);
-addLocaleData(deLocaleData);
+addLocaleData(esLocaleData);
 
 export const appLocales = [
   'en',
-  'de',
+  'es'
 ];
 
+export const appLocalesMessages = {
+  'en':'talo.components.LanguageProvider.eng',
+  'es':'talo.components.LanguageProvider.es'
+};
+
 import enTranslationMessages from './translations/en.json';
-import deTranslationMessages from './translations/de.json';
+import esTranslationMessages from './translations/es.json';
 
 export const formatTranslationMessages = (messages) => {
   const formattedMessages = {};
@@ -31,5 +36,5 @@ export const formatTranslationMessages = (messages) => {
 
 export const translationMessages = {
   en: formatTranslationMessages(enTranslationMessages),
-  de: formatTranslationMessages(deTranslationMessages),
+  es: formatTranslationMessages(esTranslationMessages),
 };

@@ -24,7 +24,7 @@ export class WorkSpacePage extends React.Component {
             { name: 'description', content: 'Talo Workspace Page' },
           ]}
         />
-        <div className={styles.messages_container}>
+        <div className={styles.messages_container} style={({display:'none'})}>
           <div className={styles.messages_centered}>
             <Logo />
             <ul className={styles.messages_list}>

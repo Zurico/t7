@@ -5,7 +5,7 @@
 }
 
 .messages_container {
-  display: block;
+  display: block !important;
   /*pointer-events: none;*/
   position: absolute;
   top: 0;

@@ -3,21 +3,38 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import styles from './styles.css';
 import Octicon from 'react-octicon';
+import PubSub from 'utils/pubsub';
 
-function Tip(props) {
+class Tip extends React.Component {
 
-  const directionClass = `tooltip_${props.direction || 'down'}`;
+  constructor(props, context){
+    super(props, context);
+  }
 
-  return (
-    <div className={`${styles.wrapper} ${props.className}`}>
-      <div className={styles.animate}>
-        <Octicon name="unverified"/>
+  startReadingTip(){
+    PubSub.publish(PubSub.topics.HELPER_TOUR_TIP_OPENED, null);
+  }
+
+  stopReadingTip(){
+    PubSub.publish(PubSub.topics.HELPER_TOUR_TIP_CLOSED, null);
+  }
+
+  render() {
+    const directionClass = `tooltip_${this.props.direction || 'down'}`;
+
+    return (
+      <div className={`${styles.wrapper} ${this.props.className}`}
+           onMouseEnter={this.startReadingTip.bind(this)}
+           onMouseLeave={this.stopReadingTip.bind(this)}>
+        <div className={styles.animate}>
+          <Octicon name="unverified"/>
+        </div>
+        <div className={`${styles.tooltip} ${styles[directionClass]}`}>
+          <FormattedMessage {...this.props.message} />
+        </div>
       </div>
-      <div className={`${styles.tooltip} ${styles[directionClass]}`}>
-        <FormattedMessage {...props.message} />
-      </div>
-    </div>
-  );
+    );
+  }
 }
 
 Tip.propTypes = {

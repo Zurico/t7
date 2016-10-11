@@ -1,15 +1,17 @@
 import React from 'react';
 import { mouseTrap } from 'react-mousetrap';
 import messages from './messages';
+import { FormattedMessage } from 'react-intl';
 import styles from './styles.css';
 import PubSub from 'utils/pubsub';
 import HotKeys from 'utils/hotkeys';
+import {Option} from 'utils/helper';
 
 class FuzzyFinder extends React.Component {
 
   constructor(props, context){
     super(props, context);
-    this.state = {items: [], topic: '', visible: false, selected: 0, input: ''};
+    this.state = {items: [], topic: '', visible: false, selected: 0, input: '', filter: ''};
   }
 
   componentWillMount() {
@@ -17,7 +19,7 @@ class FuzzyFinder extends React.Component {
     this.props.bindShortcut(HotKeys.EXIT_FUZZY_FINDER.keys, this.cancelByKey.bind(this));
     this.props.bindShortcut(HotKeys.MOVE_DOWN_FUZZY_FINDER.keys, this.moveDown.bind(this));
     this.props.bindShortcut(HotKeys.MOVE_UP_FUZZY_FINDER.keys, this.moveUp.bind(this));
-    this.props.bindShortcut(HotKeys.ENTER_FUZZY_FINDER.keys, this.selectByEnter.bind(this));
+    this.props.bindShortcut(HotKeys.ENTER_FUZZY_FINDER.keys, this.selectItemByEnter.bind(this));
     // Subscribe to fuzzy finder lang messages
     this.pubSubToken = PubSub.subscribe(PubSub.topics.FUZZY_FINDER_REQUIRED, this.reset.bind(this));
   }
@@ -27,8 +29,16 @@ class FuzzyFinder extends React.Component {
     if(this.pubSubToken) PubSub.unsubscribe(this.pubSubToken);
   }
 
+  filter(item){
+    return item.title.toLowerCase().includes(this.state.filter.toLowerCase());
+  }
+
+  updateFilter(event){
+    this.setState({filter: event.target.value});
+  }
+
   reset(topic, message){
-    this.setState({...message, selected: 0, visible: true});
+    this.setState({...message, selected: 0, visible: true, filter: ''});
     this.refs.searchInput.focus();
   }
 
@@ -44,8 +54,8 @@ class FuzzyFinder extends React.Component {
     this.updateScroll();
   }
 
-  selectByEnter(){
-    this.close(this.state.items[this.state.selected].value);
+  selectItemByEnter(){
+    this.selectItem();
     // Prevent default
     return HotKeys.ENTER_FUZZY_FINDER.default;
   }
@@ -65,11 +75,22 @@ class FuzzyFinder extends React.Component {
     return HotKeys.EXIT_FUZZY_FINDER.default;
   }
 
-  cancelByClick(event){
+  highlightItem(event){
     const target = event.target;
-    const meta = target.getAttribute('rel');
+    const position = target.getAttribute('rel');
     if(target.tagName.toLowerCase() === 'div') return this.close();
-    if(target.tagName.toLowerCase() === 'li') return this.close(meta);
+    if(target.tagName.toLowerCase() === 'li') return this.setState({selected: position});
+  }
+
+  selectItemByClick(event){
+    const target = event.target;
+    if(target.tagName.toLowerCase() === 'div') return this.close();
+    if(target.tagName.toLowerCase() === 'input') return;
+    this.selectItem();
+  }
+
+  selectItem(event){
+    this.close(this.state.items.filter(this.filter.bind(this))[this.state.selected].value);
   }
 
   close(emit){
@@ -80,16 +101,16 @@ class FuzzyFinder extends React.Component {
   render(){
     return (
       <div className={`${this.state.visible ? styles.modal : styles.hidden}`}>
-        <div className={styles.overlay} onClick={this.cancelByClick.bind(this)}>
-          <input ref="searchInput" className={`${styles.text_editor} mousetrap`} type="text" />
+        <div className={styles.overlay} onMouseDown={this.highlightItem.bind(this)} onMouseUp={this.selectItemByClick.bind(this)}>
+          <input ref="searchInput" className={`${styles.text_editor} mousetrap`} type="text" value={this.state.filter} onChange={this.updateFilter.bind(this)}/>
           <ol ref="itemsList" className={styles.list_group}>
             {
-              this.state.items.map((item, pos) =>
+              Option(this.state.items.filter(this.filter.bind(this)).map((item, pos) =>
                 <li key={item.value}
                     className={`${item.marked ? styles.actived : ''} ${this.state.selected == pos ? styles.selected : ''}`}
-                    rel={item.value}>
-                  {item.title}
-                </li>)
+                    rel={pos}>
+                    <FormattedMessage id={item.title} />
+                </li>), <li className={styles.no_results}><FormattedMessage {...messages.notFound} /></li>)
             }
           </ol>
         </div>

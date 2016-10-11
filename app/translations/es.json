@@ -1,18 +1,33 @@
 [
   {
+    "id": "talo.components.FuzzyFinder.notFound",
+    "defaultMessage": "No se encontraron coincidencias",
+    "message": "No se encontraron coincidencias"
+  },
+  {
+    "id": "talo.components.LanguageProvider.eng",
+    "defaultMessage": "Inglés",
+    "message": "Inglés"
+  },
+  {
+    "id": "talo.components.LanguageProvider.es",
+    "defaultMessage": "Español",
+    "message": "Español"
+  },
+  {
     "id": "talo.components.HelperTour.tree.message",
-    "defaultMessage": "de",
-    "message": ""
+    "defaultMessage": "Desde esta zona, podrás acceder a sus notebooks. Recuerde sincronizarlos si desea persistirlos en Valo.",
+    "message": "Desde esta zona, podrás acceder a sus notebooks. Recuerde sincronizarlos si desea persistirlos en Valo."
   },
   {
     "id": "talo.components.HelperTour.footer.left.message",
-    "defaultMessage": "de",
-    "message": ""
+    "defaultMessage": "El panel inferior le indicará qué notebook está visualizando, así como la extensión del mismo. Cada extensión le permitirá visualizar su notebook de forma diferente. Puedes añadir más extensiones instalando nuevos plugins.",
+    "message": "El panel inferior le indicará qué notebook está visualizando, así como la extensión del mismo. Cada extensión le permitirá visualizar su notebook de forma diferente. Puedes añadir más extensiones instalando nuevos plugins."
   },
   {
     "id": "talo.components.HelperTour.footer.right.message",
-    "defaultMessage": "de",
-    "message": ""
+    "defaultMessage": "Modifique el idioma, reporte un error o sincronice sus notebooks desde el panel inferior.",
+    "message": "Modifique el idioma, reporte un error o sincronice sus notebooks desde el panel inferior."
   },
   {
     "id": "app.components.LocaleToggle.de",

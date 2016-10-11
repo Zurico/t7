@@ -1,5 +1,35 @@
 [
   {
+    "id": "talo.components.FuzzyFinder.notFound",
+    "defaultMessage": "No matches found",
+    "message": "No matches found"
+  },
+  {
+    "id": "talo.components.LanguageProvider.eng",
+    "defaultMessage": "English",
+    "message": "English"
+  },
+  {
+    "id": "talo.components.LanguageProvider.es",
+    "defaultMessage": "Spanish",
+    "message": "Spanish"
+  },
+  {
+    "id": "talo.components.HelperTour.tree.message",
+    "defaultMessage": "Use the options up",
+    "message": "Use the options up"
+  },
+  {
+    "id": "talo.components.HelperTour.footer.left.message",
+    "defaultMessage": "Use the options down",
+    "message": "Use the options down"
+  },
+  {
+    "id": "talo.components.HelperTour.footer.right.message",
+    "defaultMessage": "Use the options below to change the application language, report a bug or syncronice your notebooks",
+    "message": "Use the options below to change the application language, report a bug or syncronice your notebooks"
+  },
+  {
     "id": "app.components.LocaleToggle.de",
     "defaultMessage": "de",
     "message": ""
