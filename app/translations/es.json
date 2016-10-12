@@ -1,5 +1,10 @@
 [
   {
+    "id": "talo.components.ResourcesTree.notebook.add",
+    "defaultMessage": "Introduzca el recurso que desee añadir. Este puede ser un cluster de Valo (ejemplo: 192.168.34.10:9999), un tenant en ese cluster de Valo (ejemplo: 192.168.34.10:9999/myTenant), o una collección en ese tenant (ejemplo: 192.168.34.10:9999/myTenant/myCollection), o bien un notebook dentro de esa collección (ejemplo: 192.168.34.10:9999/myTenant/myCollection/myNotebook.js)",
+    "message": "Introduzca el recurso que desee añadir. Este puede ser un cluster de Valo (ejemplo: 192.168.34.10:9999), un tenant en ese cluster de Valo (ejemplo: 192.168.34.10:9999/myTenant), o una collección en ese tenant (ejemplo: 192.168.34.10:9999/myTenant/myCollection), o bien un notebook dentro de esa collección (ejemplo: 192.168.34.10:9999/myTenant/myCollection/myNotebook.js)"
+  },
+  {
     "id": "talo.components.FuzzyFinder.notFound",
     "defaultMessage": "No se encontraron coincidencias",
     "message": "No se encontraron coincidencias"

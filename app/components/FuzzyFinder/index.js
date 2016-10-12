@@ -11,7 +11,7 @@ class FuzzyFinder extends React.Component {
 
   constructor(props, context){
     super(props, context);
-    this.state = {items: [], topic: '', visible: false, selected: 0, input: '', filter: ''};
+    this.state = {items: [], topic: '', visible: false, selected: 0, input: '', filter: '', description: messages.notFound};
   }
 
   componentWillMount() {
@@ -38,7 +38,7 @@ class FuzzyFinder extends React.Component {
   }
 
   reset(topic, message){
-    this.setState({...message, selected: 0, visible: true, filter: ''});
+    this.setState({selected: 0, visible: true, filter: '', description: messages.notFound, ...message});
     this.refs.searchInput.focus();
   }
 
@@ -110,7 +110,7 @@ class FuzzyFinder extends React.Component {
                     className={`${item.marked ? styles.actived : ''} ${this.state.selected == pos ? styles.selected : ''}`}
                     rel={pos}>
                     <FormattedMessage id={item.title} />
-                </li>), <li className={styles.no_results}><FormattedMessage {...messages.notFound} /></li>)
+                </li>), <li className={styles.no_results}><FormattedMessage {...this.state.description} /></li>)
             }
           </ol>
         </div>

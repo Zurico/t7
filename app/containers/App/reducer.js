@@ -14,11 +14,12 @@ import {
   LOAD_REPOS_SUCCESS,
   LOAD_REPOS,
   LOAD_REPOS_ERROR,
+  CHANGE_NOTEBOOK_SELECTED,
 } from './constants';
 import { fromJS } from 'immutable';
 
 // The initial state of the App
-const initialState = {
+const initialState = fromJS({
   'settings' : {
     'language': 'en',
     'theme': 'default'
@@ -45,9 +46,10 @@ const initialState = {
   'app': {
     'license': 'MIT',
     'loading': false,
-    'error': false
+    'error': false,
+    'notebook': 'localhost:8888/talo/samples/Notebook_1'
   }
-};
+});
 
 function appReducer(state = initialState, action) {
   switch (action.type) {
@@ -65,6 +67,8 @@ function appReducer(state = initialState, action) {
     //   return state
     //     .set('error', action.error)
     //     .set('loading', false);
+    case CHANGE_NOTEBOOK_SELECTED:
+      return state.setIn(['app', 'notebook'], action.notebook);
     default:
       return state;
   }

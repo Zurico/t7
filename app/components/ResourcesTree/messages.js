@@ -6,14 +6,8 @@
 import { defineMessages } from 'react-intl';
 
 export default defineMessages({
-  licenseMessage: {
-    id: 'boilerplate.components.Footer.license.message',
-    defaultMessage: '',
-  },
-  authorMessage: {
-    id: 'boilerplate.components.Footer.author.message',
-    defaultMessage: `
-      Made with love by {author}.
-    `,
-  },
+  addNotebook: {
+    id: 'talo.components.ResourcesTree.notebook.add',
+    defaultMessage: 'Type the resource you want to add. This can be a Valo cluster instance (i.e. 192.168.34.10:9999), a tenant in that Valo cluster(i.e. 192.168.34.10:9999/myTenant), or a collection in that tenant (i.e. 192.168.34.10:9999/myTenant/myCollection), or a notebook within a collection (i.e. 192.168.34.10:9999/myTenant/myCollection/myNotebook.js)',
+  }
 });

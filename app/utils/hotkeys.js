@@ -1,6 +1,7 @@
 export default {
 
   'CHANGE_LANG': {keys:'alt+l', default: true},
+  'ADD_NOTEBOOK': {keys:'alt+n', default: true},
   'MOVE_DOWN_FUZZY_FINDER': {keys:'down', default: true},
   'MOVE_UP_FUZZY_FINDER': {keys:'up', default: true},
   'EXIT_FUZZY_FINDER': {keys:'esc', default: true},
