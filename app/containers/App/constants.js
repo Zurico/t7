@@ -12,4 +12,5 @@
 export const LOAD_REPOS = 'boilerplate/App/LOAD_REPOS';
 export const LOAD_REPOS_SUCCESS = 'boilerplate/App/LOAD_REPOS_SUCCESS';
 export const LOAD_REPOS_ERROR = 'boilerplate/App/LOAD_REPOS_ERROR';
-export const CHANGE_NOTEBOOK_SELECTED = 'talo/App/CHANGE_NOTEBOOK_SELECTED';
+export const CHANGE_RESOURCE_SELECTED = 'talo/App/CHANGE_RESOURCE_SELECTED';
+export const ADD_RESOURCE = 'talo/App/ADD_RESOURCE';

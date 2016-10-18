@@ -21,7 +21,7 @@
   z-index: 2;
   display: flex;
   flex-direction: column;
-  padding: 10px 0;
+  padding: 10px 0 0 5px;
   border-right: 1px solid #27292c; /*rgba(115, 170, 100, 0.3);*/
 }
 
@@ -38,8 +38,8 @@
 }
 
 .tree_view_resizer {
-  right: -5px;
-  width: 8px;
+  right: 0px;
+  width: 5px;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -50,6 +50,11 @@
 
 .tree_wrapper {
   margin-bottom: 5px;
+  overflow-x: hidden;
+  /*
+  & span {
+    word-break: break-all;
+  }*/
 }
 
 .tree_list {

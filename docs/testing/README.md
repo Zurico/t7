@@ -9,7 +9,7 @@ things you should test. If you've never done this before start with [unit testin
 Move on to [component testing](component-testing.md) when you feel like you
 understand that!
 
-We also support [remote testing](remote-testing.md) your local application,
+We also support [manual/remote testing](remote-testing.md) your local application,
 which is quite awesome, so definitely check that out!
 
 ## Usage with this boilerplate
@@ -26,3 +26,14 @@ To test your application started with this boilerplate do the following:
 
 There are a few more commands related to testing, checkout the [commands documentation](../general/commands.md#testing)
 for the full list!
+
+## Testing tagging
+
+We do support tags to easily organize test suites. The tags we support are explained below.
+
+* @unit -> that's an unit test
+* @int -> that's an integration/component test
+* @p1 -> that's a test priority 1 (highest)
+* @p2 -> that's a test priority 2 (medium)
+* @p3 -> that's a test priority 3 (low)
+* @slow -> that's an slow running test

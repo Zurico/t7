@@ -11,7 +11,7 @@ class FuzzyFinder extends React.Component {
 
   constructor(props, context){
     super(props, context);
-    this.state = {items: [], topic: '', visible: false, selected: 0, input: '', filter: '', description: messages.notFound};
+    this.state = {items: [], topic: '', visible: false, selected: 0, input: '', filter: '', noMatchesText: messages.notFound, enableCustomSelection: false};
   }
 
   componentWillMount() {
@@ -38,7 +38,7 @@ class FuzzyFinder extends React.Component {
   }
 
   reset(topic, message){
-    this.setState({selected: 0, visible: true, filter: '', description: messages.notFound, ...message});
+    this.setState({selected: 0, visible: true, filter: '', enableCustomSelection: false, noMatchesText: messages.notFound, ...message});
     this.refs.searchInput.focus();
   }
 
@@ -76,26 +76,33 @@ class FuzzyFinder extends React.Component {
   }
 
   highlightItem(event){
-    const target = event.target;
+    const target = event.target.tagName.toLowerCase() === 'span' ? event.target.parentElement : event.target;
     const position = target.getAttribute('rel');
-    if(target.tagName.toLowerCase() === 'div') return this.close();
-    if(target.tagName.toLowerCase() === 'li') return this.setState({selected: position});
+    if(target.tagName.toLowerCase() === 'input') return;
+    if(target.tagName.toLowerCase() !== 'li') return this.close();
+    else return this.setState({selected: position});
   }
 
   selectItemByClick(event){
-    const target = event.target;
-    if(target.tagName.toLowerCase() === 'div') return this.close();
+    const target = event.target.tagName.toLowerCase() === 'span' ? event.target.parentElement : event.target;
     if(target.tagName.toLowerCase() === 'input') return;
+    if(this.refs.searchInput === document.activeElement) return;
+    if(target.tagName.toLowerCase() !== 'li') return this.close();
+    if(target.classList.contains('no-select')) return;
+    if(target.getAttribute('rel') != this.state.selected) return;
     this.selectItem();
   }
 
-  selectItem(event){
-    this.close(this.state.items.filter(this.filter.bind(this))[this.state.selected].value);
+  selectItem() {
+    const selectedItem = this.state.items.filter(this.filter.bind(this))[this.state.selected];
+    if(selectedItem) return this.close(selectedItem.value);
+    if(this.state.enableCustomSelection) return this.close(this.state.filter);
   }
 
   close(emit){
     this.setState({visible: false});
     if(emit) PubSub.publish(this.state.topic, emit);
+    PubSub.publish(PubSub.topics.FUZZY_FINDER_CLOSED);
   }
 
   render(){
@@ -110,7 +117,7 @@ class FuzzyFinder extends React.Component {
                     className={`${item.marked ? styles.actived : ''} ${this.state.selected == pos ? styles.selected : ''}`}
                     rel={pos}>
                     <FormattedMessage id={item.title} />
-                </li>), <li className={styles.no_results}><FormattedMessage {...this.state.description} /></li>)
+                </li>), <li className={`${styles.no_results} no-select`}><FormattedMessage {...this.state.noMatchesText} /></li>)
             }
           </ol>
         </div>

@@ -10,6 +10,7 @@ const modules = [
 
 module.exports = {
   devtool: 'inline-source-map',
+  // cssLoaders: 'style-loader!css-loader?localIdentName=[local]__[path][name]__[hash:base64:5]&modules&importLoaders=1&sourceMap!postcss-loader',
   module: {
     // Some libraries don't like being run through babel.
     // If they gripe, put them here.

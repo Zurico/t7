@@ -1,8 +1,10 @@
 # Component testing
 
 [Unit testing your Redux actions and reducers](unit-testing.md) is nice, but you
-can do even more to make sure nothing breaks your application. Since React is
-the _view_ layer of your app, let's see how to test Components too!
+can do even more to make sure nothing breaks your application, when it integrates with other parts.
+Since React is the _view_ layer of your app, let's see how to test Components too!
+
+Note: Component testing can be also seen as integration testing.
 
 <!-- TOC depthFrom:2 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 

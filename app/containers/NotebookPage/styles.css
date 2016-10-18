@@ -7,7 +7,6 @@
 
 .tabs_list {
   height: 3em;
-    box-shadow: inset 0 -1px 0 #111314;
     background: #161719;
     overflow-x: auto;
     overflow-y: hidden;
@@ -51,7 +50,7 @@
   color: rgb(163, 168, 174);
 }
 
-.tab_item:before{
+.tab_item.actived:before{
 
   left: 0;
   border-radius: 0;
@@ -61,14 +60,16 @@
   position: absolute;
   pointer-events: none;
   z-index: 2;
-  top: 1px;
-  left: 1px;
+  top: 0px;
+  left: 0px;
   bottom: 1px;
   width: 2px;
+  /*width: 100%;*/
+  /*height:2px;*/
   border-top-left-radius: inherit;
-  border-radius: 3px 0;
-  background: #52a8ff;
-  opacity: 0;
+  border-radius: 1px 0;
+  background: #73c990;
+  opacity: 1;
   transition: opacity .16s;
 
 }
@@ -165,19 +166,20 @@
 
 .tabs_views {
   flex: 1;
-    display: flex;
-    min-height: 0;
-    min-width: 0;
-    position: relative;
+  display: flex;
+  min-height: 0;
+  min-width: 0;
+  position: relative;
 
 }
 
 .tabs_view {
   position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      display: flex;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  -webkit-user-select: none;
 
 }

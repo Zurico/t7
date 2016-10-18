@@ -1,5 +1,6 @@
 import {
-  CHANGE_NOTEBOOK_SELECTED,
+  CHANGE_RESOURCE_SELECTED,
+  ADD_RESOURCE
 } from 'containers/App/constants';
 
 /**
@@ -9,9 +10,23 @@ import {
  *
  * @return {object}    An action object with a type of CHANGE_USERNAME
  */
-export function changeNotebookSelected(notebook) {
+export function changeResourceSelected(resource) {
   return {
-    type: CHANGE_NOTEBOOK_SELECTED,
-    notebook,
+    type: CHANGE_RESOURCE_SELECTED,
+    resource,
+  };
+}
+
+/**
+ * Changes the input field of the form
+ *
+ * @param  {name} name The new text of the input field
+ *
+ * @return {object}    An action object with a type of CHANGE_USERNAME
+ */
+export function addTreeResource(resource) {
+  return {
+    type: ADD_RESOURCE,
+    resource,
   };
 }

@@ -9,11 +9,13 @@
  */
 
  /* Style active line */
-.cm-s-zenburn .activeline { background: #161719 !important; }
+.cm-s-zenburn .CodeMirror-activeline { background: #161719 !important; }
  /* Style active line number */
-.cm-s-zenburn .activeline + .CodeMirror-gutter-wrapper .CodeMirror-linenumber { color: #DDD; background: #161719 !important; }
+.cm-s-zenburn .CodeMirror-activeline .CodeMirror-activeline-gutter .CodeMirror-linenumber { color: #DDD; background: #161719 !important; }
 /* Line number */
 .cm-s-zenburn { height: 100%; font-family: Menlo, Consolas, 'DejaVu Sans Mono', monospace; }
+.cm-s-zenburn .CodeMirror-selectedtext { background-color: rgba(115, 201, 144, 0.7) !important; color: rgba(0 ,0, 0, 1) !important; }
+.cm-s-zenburn .CodeMirror-selected { background-color: transparent !important;}
 .cm-s-zenburn .CodeMirror-lines { padding: 0; }
 .cm-s-zenburn .CodeMirror-gutter-wrapper { z-index:2; }
 .cm-s-zenburn .CodeMirror-gutters { z-index:1; background: #27292c !important; border-right: 0;/*border-right: 1px solid #27292c;*/ }

@@ -5,6 +5,8 @@ code, functions. We run our tests and automatically verify that our functions
 do the thing we expect them to do. We assert that, given a set of inputs, our
 functions return the proper values and handle problems.
 
+Unit testing are great for testing functionality, so they should not ever test styling, as this could change completely to adapt to new design, browsers, standards, without affecting functionality at all. For testing styles, please, check [style testing](e2e-testing.md) guide. All unit test are tagged as `@unit` and they are focused on just testing functionality which will not change over time. That means, changing logic will also imply updating unit tests.
+
 This boilerplate uses the [Mocha](https://github.com/mochajs/mocha) test
 framework to run the tests and [expect](http://github.com/mjackson/expect) for
 assertions. These libraries make writing tests as easy as speaking - you

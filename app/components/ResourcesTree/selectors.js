@@ -10,12 +10,12 @@ const selectValo = () => createSelector(
   globalState => globalState.get('valo').toJSON()
 );
 
-const selectNotebook = () => createSelector(
+const selectResource = () => createSelector(
   selectGlobal(),
-  globalState => globalState.getIn(['app', 'notebook'])
+  globalState => globalState.getIn(['app', 'resource'])
 );
 
 export {
   selectValo,
-  selectNotebook
+  selectResource
 };

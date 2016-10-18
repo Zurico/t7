@@ -90,7 +90,21 @@
     padding: 12px 1em;
     line-height: 2em;
     border-bottom: 1px solid #111314;
+    user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
     -webkit-user-select: none;
+    -ms-user-select: none;
+
+    & span {
+      user-drag: none;
+      user-select: none;
+      -moz-user-select: none;
+      -webkit-user-drag: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+    }
   }
 
   & li.selected {
