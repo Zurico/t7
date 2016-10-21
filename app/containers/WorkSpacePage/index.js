@@ -6,11 +6,12 @@
 
 import React from 'react';
 import Helmet from 'react-helmet';
-import styles from './styles.css';
-
+import { FormattedMessage } from 'react-intl';
 // https://github.com/primer/octicons/tree/v2.1.2
 import Octicon from 'react-octicon';
 import Logo from 'components/Logo';
+import styles from './styles.css';
+import messages from './messages';
 
 export class WorkSpacePage extends React.Component {
 
@@ -29,8 +30,9 @@ export class WorkSpacePage extends React.Component {
             <Logo />
             <ul className={styles.messages_list}>
               <li className={styles.message}>
-                Discover all you can do with
-                <span className={styles.keystroke}>⌘H</span>
+                <FormattedMessage {...messages.availableOptions} />
+                {/*<span className={styles.keystroke}>⌘H</span>*/}
+                <span className={styles.keystroke}>⌥C</span>
               </li>
             </ul>
           </div>

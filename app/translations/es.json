@@ -1,5 +1,10 @@
 [
   {
+    "id": "talo.containers.WorkSpacePage.tips.all",
+    "defaultMessage": "Descubra todas las opciones disponibles con",
+    "message": "Descubra todas las opciones disponibles con"
+  },
+  {
     "id": "talo.components.Footer.license.message.abbr",
     "defaultMessage": "MIT",
     "message": "MIT"
