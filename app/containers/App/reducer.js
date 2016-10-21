@@ -41,8 +41,7 @@ const initialState = fromJS({
       'talo3': {
         'samples2': [{'title': 'Notebook_1', 'ext': 'js', 'content': ''}]
       }
-    },
-    '192.168.32.14:9898':{}
+    }
   },
   'user': {},
   'app': {

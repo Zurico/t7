@@ -52,62 +52,70 @@ class ResourcesTree extends React.Component {
     this.props.addTreeResource(resource);
   }
 
+  toggleSubtree(subtree){
+    if(!subtree) return;
+    Array.from(subtree).forEach(item => item.style.display = item.style.display == "none" ? "block" : "none");
+  }
+
   select(event){
     let target = event.target;
     while(target && target.tagName.toLowerCase() != 'li') target = target.parentElement;
     if(!target) return;
     this.props.changeResourceSelected(target.getAttribute('rel'));
+    this.toggleSubtree(target.querySelectorAll('ol'))
   }
 
   render(){
     return (
       <div className={styles.container}>
-        <div className={styles.tree_view_scroller} onClick={this.select.bind(this)}>
-        { Object.keys(this.props.valo).map(hostname =>
-            (<div className={styles.tree_wrapper} key={hostname}>
-                <ol className={styles.tree_list} tabIndex="-1">
-                  <li rel={hostname} className={`${styles.tree_list_item} ${this.props.resourceSelected === hostname ? styles.selected : ''}`}>
-                     <div className={styles.tree_list_item_header}>
-                       <span className={styles.tree_list_item_entries_repo}>
-                         {hostname}
-                       </span>
-                     </div>
-                     { Object.keys(this.props.valo[hostname]).map(tenant =>
-                       (<ol className={styles.tree_list_item_entries} key={`${hostname}/${tenant}`}>
-                         <li rel={`${hostname}/${tenant}`}
-                             className={`${this.props.resourceSelected === (hostname+'/'+tenant) ? styles.selected : ''}`}>
-                           <div className={styles.tree_list_item_header}>
-                             <span className={styles.tree_list_item_entries_tenant}>{tenant}</span>
-                           </div>
-                           { Object.keys(this.props.valo[hostname][tenant]).map(collection =>
-                             (<ol className={styles.tree_list_item_entries} key={`${hostname}/${tenant}/${collection}`}>
-                                <li rel={`${hostname}/${tenant}/${collection}`}
-                                    className={`${this.props.resourceSelected === (hostname+'/'+tenant+'/'+collection) ? styles.selected : ''}`}>
-                                   <div className={styles.tree_list_item_header}>
-                                     <span className={styles.tree_list_item_entries_collection}>{collection}</span>
-                                   </div>
-                                   {this.props.valo[hostname][tenant][collection].map((notebook,pos) =>
-                                    (<ol className={styles.tree_list_item_entries} key={`${hostname}/${tenant}/${collection}/${notebook.title}`}>
-                                      <li rel={`${hostname}/${tenant}/${collection}/${notebook.title}`}
-                                          className={`${styles.tree_list_item_leaf} ${this.props.resourceSelected === (hostname+'/'+tenant+'/'+collection+'/'+notebook.title) ? styles.selected : ''}`}>
-                                        <span className={styles.tree_list_item_entries_notebook}>
-                                          {notebook.title}.{notebook.ext}
-                                        </span>
-                                      </li>
-                                    </ol>)
-                                   )}
-                                </li>
-                              </ol>)
-                           )}
-                         </li>
-                       </ol>)
-                     )}
-                  </li>
-              </ol>
-            </div>)
-          )}
+        <div className={styles.global_scroller}>
+          <div className={styles.tree_view_scroller} onClick={this.select.bind(this)}>
+          { Object.keys(this.props.valo).map(hostname =>
+              (<div className={styles.tree_wrapper} key={hostname}>
+                  <ol className={styles.tree_list} tabIndex="-1">
+                    <li rel={hostname} className={`${styles.tree_list_item} ${this.props.resourceSelected === hostname ? styles.selected : ''}`}>
+                       <div className={styles.tree_list_item_header}>
+                         <span className={styles.tree_list_item_entries_repo}>
+                           {hostname}
+                         </span>
+                       </div>
+                       { Object.keys(this.props.valo[hostname]).map(tenant =>
+                         (<ol className={styles.tree_list_item_entries} key={`${hostname}/${tenant}`}>
+                           <li rel={`${hostname}/${tenant}`}
+                               className={`${this.props.resourceSelected === (hostname+'/'+tenant) ? styles.selected : ''}`}>
+                             <div className={styles.tree_list_item_header}>
+                               <span className={styles.tree_list_item_entries_tenant}>{tenant}</span>
+                             </div>
+                             { Object.keys(this.props.valo[hostname][tenant]).map(collection =>
+                               (<ol className={styles.tree_list_item_entries} key={`${hostname}/${tenant}/${collection}`}>
+                                  <li rel={`${hostname}/${tenant}/${collection}`}
+                                      className={`${this.props.resourceSelected === (hostname+'/'+tenant+'/'+collection) ? styles.selected : ''}`}>
+                                     <div className={styles.tree_list_item_header}>
+                                       <span className={styles.tree_list_item_entries_collection}>{collection}</span>
+                                     </div>
+                                     {this.props.valo[hostname][tenant][collection].map((notebook,pos) =>
+                                      (<ol className={styles.tree_list_item_entries} key={`${hostname}/${tenant}/${collection}/${notebook.title}`}>
+                                        <li rel={`${hostname}/${tenant}/${collection}/${notebook.title}`}
+                                            className={`${styles.tree_list_item_leaf} ${this.props.resourceSelected === (hostname+'/'+tenant+'/'+collection+'/'+notebook.title) ? styles.selected : ''}`}>
+                                          <span className={styles.tree_list_item_entries_notebook}>
+                                            {notebook.title}.{notebook.ext}
+                                          </span>
+                                        </li>
+                                      </ol>)
+                                     )}
+                                  </li>
+                                </ol>)
+                             )}
+                           </li>
+                         </ol>)
+                       )}
+                    </li>
+                </ol>
+              </div>)
+            )}
+          </div>
+          <div className={styles.tree_view_resizer}></div>
         </div>
-        <div className={styles.tree_view_resizer}></div>
       </div>
     );
   }
