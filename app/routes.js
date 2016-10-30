@@ -23,35 +23,44 @@ export default function createRoutes(store) {
     // },
     {
       path: '/',
-      name: 'workspace',
+      name: 'home',
       getComponent(nextState, cb) {
-        System.import('containers/WorkSpacePage')
+        System.import('containers/HomePage')
           .then(loadModule(cb))
           .catch(errorLoading);
       }
     },
     {
-      path: '/notebook',
-      name: 'notebook',
-      // Remove redirection in line below when setting a default notebook page
-      // onEnter: (nextState, replace) => replace('/notebook/js'),
+      path: '/workspace',
+      name: 'workspace',
       getComponent(nextState, cb) {
-        System.import('containers/NotebookPage')
+        System.import('containers/WorkSpace')
           .then(loadModule(cb))
           .catch(errorLoading);
-      },
-      childRoutes: [
-        {
-          path: '/notebook/js',
-          name: 'notebook_js',
-          getComponent(nextState, cb) {
-            System.import('containers/NotebookPageJS')
-              .then(loadModule(cb))
-              .catch(errorLoading);
-          },
-        }
-      ]
+      }
     },
+    // {
+    //   path: '/notebook',
+    //   name: 'notebook',
+    //   // Remove redirection in line below when setting a default notebook page
+    //   // onEnter: (nextState, replace) => replace('/notebook/js'),
+    //   getComponent(nextState, cb) {
+    //     System.import('containers/NotebookPage')
+    //       .then(loadModule(cb))
+    //       .catch(errorLoading);
+    //   },
+    //   childRoutes: [
+    //     {
+    //       path: '/notebook/js',
+    //       name: 'notebook_js',
+    //       getComponent(nextState, cb) {
+    //         System.import('containers/NotebookPageJS')
+    //           .then(loadModule(cb))
+    //           .catch(errorLoading);
+    //       },
+    //     }
+    //   ]
+    // },
     // {
     //   path: '/',
     //   name: 'home',

@@ -5,9 +5,12 @@ import { connect } from 'react-redux';
 import { mouseTrap } from 'react-mousetrap';
 import { createStructuredSelector } from 'reselect';
 import { selectValo, selectResource } from './selectors';
-import {changeResourceSelected, addTreeResource} from './actions';
+import {changeResourceSelected, addToWorkSpace, addTreeResource} from './actions';
+import { push } from 'react-router-redux';
 import HotKeys from 'utils/hotkeys';
 import PubSub from 'utils/pubsub';
+import * as Register from 'utils/register';
+import * as Resources from 'utils/resources';
 
 class ResourcesTree extends React.Component {
 
@@ -32,6 +35,8 @@ class ResourcesTree extends React.Component {
     // notebook will be selected only on click
   }
 
+  componentDidUpdate(){}
+
   addNotebookFuzzyFinder(){
     // Request the fuzzy finder
     PubSub.publish(PubSub.topics.FUZZY_FINDER_REQUIRED, {
@@ -50,11 +55,17 @@ class ResourcesTree extends React.Component {
 
   addNotebookAction(topic, resource){
     this.props.addTreeResource(resource);
+    //if a notebook
+    if(resource.split('/').length === 4){
+      const target = this.refs.tree_view.querySelector(`li [rel="${resource}"]`).parentElement.parentElement;
+      Array.from(target.querySelectorAll('ol')).forEach(item => item.style.display = "block");
+      target.querySelector('div').classList.remove(styles.tree_list_item_header_collapsed);
+    }
   }
 
-  toggleSubtree(subtree){
-    if(!subtree) return;
-    Array.from(subtree).forEach(item => item.style.display = item.style.display == "none" ? "block" : "none");
+  toggleSubtree(root, subtree){
+    if(subtree) Array.from(subtree).forEach(item => item.style.display = item.style.display == "none" ? "block" : "none");
+    if(root) root.classList.toggle(styles.tree_list_item_header_collapsed);
   }
 
   select(event){
@@ -62,14 +73,33 @@ class ResourcesTree extends React.Component {
     while(target && target.tagName.toLowerCase() != 'li') target = target.parentElement;
     if(!target) return;
     this.props.changeResourceSelected(target.getAttribute('rel'));
-    this.toggleSubtree(target.querySelectorAll('ol'))
+    this.toggleSubtree(target.querySelector('div'), target.querySelectorAll('ol'));
+    return target.getAttribute('rel');
+  }
+
+  open(event){
+
+    const resource = this.select(event);
+
+    if(Resources.isNotebook(resource)){
+      this.props.addToWorkSpace({
+        type: Register.EXT,
+        source: Resources.getExt(resource),
+        meta: resource,
+        title: Resources.getNotebookTitle(resource),
+        id: resource
+      });
+
+      this.props.changeRoute('/workspace');
+    }
+
   }
 
   render(){
     return (
       <div className={styles.container}>
         <div className={styles.global_scroller}>
-          <div className={styles.tree_view_scroller} onClick={this.select.bind(this)}>
+          <div className={styles.tree_view_scroller} onDoubleClick={this.open.bind(this)} onClick={this.select.bind(this)} ref="tree_view">
           { Object.keys(this.props.valo).map(hostname =>
               (<div className={styles.tree_wrapper} key={hostname}>
                   <ol className={styles.tree_list} tabIndex="-1">
@@ -94,9 +124,9 @@ class ResourcesTree extends React.Component {
                                        <span className={styles.tree_list_item_entries_collection}>{collection}</span>
                                      </div>
                                      {this.props.valo[hostname][tenant][collection].map((notebook,pos) =>
-                                      (<ol className={styles.tree_list_item_entries} key={`${hostname}/${tenant}/${collection}/${notebook.title}`}>
-                                        <li rel={`${hostname}/${tenant}/${collection}/${notebook.title}`}
-                                            className={`${styles.tree_list_item_leaf} ${this.props.resourceSelected === (hostname+'/'+tenant+'/'+collection+'/'+notebook.title) ? styles.selected : ''}`}>
+                                      (<ol className={styles.tree_list_item_entries} key={`${hostname}/${tenant}/${collection}/${notebook.title}.${notebook.ext}`}>
+                                        <li rel={`${hostname}/${tenant}/${collection}/${notebook.title}.${notebook.ext}`}
+                                            className={`${styles.tree_list_item_leaf} ${this.props.resourceSelected === (hostname+'/'+tenant+'/'+collection+'/'+notebook.title+'.'+notebook.ext) ? styles.selected : ''}`}>
                                           <span className={styles.tree_list_item_entries_notebook}>
                                             {notebook.title}.{notebook.ext}
                                           </span>
@@ -128,7 +158,9 @@ ResourcesTree.propTypes = {
 
 const mapDispatchToProps = dispatch => ({
   changeResourceSelected: resource => dispatch(changeResourceSelected(resource)),
-  addTreeResource: resource => dispatch(addTreeResource(resource))
+  addToWorkSpace: resource => dispatch(addToWorkSpace(resource)),
+  addTreeResource: resource => dispatch(addTreeResource(resource)),
+  changeRoute: url => dispatch(push(url)),
 });
 
 const mapStateToProps = createStructuredSelector({

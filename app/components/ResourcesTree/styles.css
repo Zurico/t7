@@ -144,6 +144,10 @@
   content: "\f0a3";
 }
 
+.tree_list_item_header_collapsed::before{
+  content: "\f078" !important;
+}
+
 .tree_list_item_entries {
   position: static;
   margin: 0;

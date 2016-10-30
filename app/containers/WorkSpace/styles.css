@@ -5,6 +5,11 @@
   flex-direction: column;
 }
 
+.tabs_list_container {
+  width:100%;
+  max-width: 100%;
+}
+
 .tabs_list {
   height: 3em;
     background: #161719;
@@ -182,4 +187,8 @@
   display: flex;
   -webkit-user-select: none;
 
+}
+
+.tab_hidden {
+  display: none;
 }

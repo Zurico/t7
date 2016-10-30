@@ -16,6 +16,7 @@ import {
   LOAD_REPOS_ERROR,
   CHANGE_RESOURCE_SELECTED,
   ADD_RESOURCE,
+  ADD_PAGE_TO_WORKSPACE,
 } from './constants';
 import { fromJS } from 'immutable';
 import _ from 'lodash';
@@ -33,26 +34,81 @@ const initialState = fromJS({
   'valo': {
     'localhost:8888':{
       'talo':{
-        'samples': [{'title': 'Notebook_1', 'ext': 'js', 'content': ''}, {'title': 'Notebook_2', 'ext': 'js', 'content': ''}],
-        'samples2': [{'title': 'Notebook_1', 'ext': 'js', 'content': ''}],
+        'samples': [{'title': 'Notebook_1', 'ext': 'js', 'content': null}, {'title': 'Notebook_2', 'ext': 'js', 'content': null}],
+        'samples2': [{'title': 'Notebook_1', 'ext': 'js', 'content': null}],
         'samples3': [],
       },
       'talo2':{},
       'talo3': {
-        'samples2': [{'title': 'Notebook_1', 'ext': 'js', 'content': ''}]
+        'samples2': [{'title': 'Notebook_1', 'ext': 'js', 'content': null}]
       }
-    }
+    },
+    'localhost:8881':{
+      'talo':{
+        'samples': [{'title': 'Notebook_1', 'ext': 'js', 'content': null}, {'title': 'Notebook_2', 'ext': 'js', 'content': null}],
+        'samples2': [{'title': 'Notebook_1', 'ext': 'js', 'content': null}],
+        'samples3': [],
+      },
+      'talo2':{},
+      'talo3': {
+        'samples2': [{'title': 'Notebook_1', 'ext': 'js', 'content': null}]
+      }
+    },
+
+    'localhost:8882':{
+      'talo':{
+        'samples': [{'title': 'Notebook_1', 'ext': 'js', 'content': null}, {'title': 'Notebook_2', 'ext': 'js', 'content': null}],
+        'samples2': [{'title': 'Notebook_1', 'ext': 'js', 'content': null}],
+        'samples3': [],
+      },
+      'talo2':{},
+      'talo3': {
+        'samples2': [{'title': 'Notebook_1', 'ext': 'js', 'content': null}]
+      }
+    },
+
+    'localhost:8883':{
+      'talo':{
+        'samples': [{'title': 'Notebook_1', 'ext': 'js', 'content': null}, {'title': 'Notebook_2', 'ext': 'js', 'content': null}],
+        'samples2': [{'title': 'Notebook_1', 'ext': 'js', 'content': null}],
+        'samples3': [],
+      },
+      'talo2':{},
+      'talo3': {
+        'samples2': [{'title': 'Notebook_1', 'ext': 'js', 'content': null}]
+      }
+    },
+
+    'localhost:8884':{
+      'talo':{
+        'samples': [{'title': 'Notebook_1', 'ext': 'js', 'content': null}, {'title': 'Notebook_2', 'ext': 'js', 'content': null}],
+        'samples2': [{'title': 'Notebook_1', 'ext': 'js', 'content': null}],
+        'samples3': [],
+      },
+      'talo2':{},
+      'talo3': {
+        'samples2': [{'title': 'Notebook_1', 'ext': 'js', 'content': null}]
+      }
+    },
+
+  },
+  'workspace': {
+    'pages': [],
+    'actived': -1
   },
   'user': {},
   'app': {
     'license': 'MIT',
     'loading': false,
     'error': false,
-    'resource': 'localhost:8888/talo/samples/Notebook_1'
+    'resource': 'localhost:8888/talo/samples/Notebook_1.js'
   }
 });
 
 function appReducer(state = initialState, action) {
+
+  let temporalState;
+
   switch (action.type) {
     // case LOAD_REPOS:
     //   return state
@@ -68,6 +124,12 @@ function appReducer(state = initialState, action) {
     //   return state
     //     .set('error', action.error)
     //     .set('loading', false);
+    case ADD_PAGE_TO_WORKSPACE:
+      const getPages = state.getIn(['workspace', 'pages']);
+      const pageIndex = getPages.findIndex(page => page.id === action.page.id);
+      if(pageIndex > -1) return state.setIn(['workspace', 'actived'], pageIndex);
+      temporalState = state.setIn(['workspace', 'pages'], getPages.push(action.page));
+      return temporalState.setIn(['workspace', 'actived'], temporalState.getIn(['workspace', 'pages']).count()-1);
     case CHANGE_RESOURCE_SELECTED:
       return state.setIn(['app', 'resource'], action.resource);
     case ADD_RESOURCE:
@@ -95,7 +157,7 @@ function appReducer(state = initialState, action) {
 
       function createNotebook(notebookPath, notebookTitle, localState = state){
         const notebookData = notebookTitle.split('.');
-        const notebook = { 'title':notebookData[0] , 'ext':notebookData[1] ? notebookData[1] : 'js', content: ''};
+        const notebook = { 'title':notebookData[0] , 'ext': notebookData[1] ? notebookData[1] : 'js', content: null};
         return localState.setIn(notebookPath, localState.getIn(notebookPath).push(notebook));
       }
 

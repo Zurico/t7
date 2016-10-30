@@ -14,3 +14,4 @@ export const LOAD_REPOS_SUCCESS = 'boilerplate/App/LOAD_REPOS_SUCCESS';
 export const LOAD_REPOS_ERROR = 'boilerplate/App/LOAD_REPOS_ERROR';
 export const CHANGE_RESOURCE_SELECTED = 'talo/App/CHANGE_RESOURCE_SELECTED';
 export const ADD_RESOURCE = 'talo/App/ADD_RESOURCE';
+export const ADD_PAGE_TO_WORKSPACE = 'talo/App/ADD_PAGE_TO_WORKSPACE';

@@ -70,6 +70,8 @@ const history = syncHistoryWithStore(browserHistory, store, {
 // Set up the router, wrapping all Routes in the App component
 import App from 'containers/App';
 import createRoutes from './routes';
+import './plugins';
+
 const rootRoute = {
   component: App,
   childRoutes: createRoutes(store),
