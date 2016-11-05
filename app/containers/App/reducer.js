@@ -17,6 +17,8 @@ import {
   CHANGE_RESOURCE_SELECTED,
   ADD_RESOURCE,
   ADD_PAGE_TO_WORKSPACE,
+  SPLIT_PANE,
+  ACTIVE_PANE,
 } from './constants';
 import { fromJS } from 'immutable';
 import _ from 'lodash';
@@ -33,81 +35,90 @@ const initialState = fromJS({
   },
   'valo': {
     'localhost:8888':{
-      'talo':{
-        'samples': [{'title': 'Notebook_1', 'ext': 'js', 'content': null}, {'title': 'Notebook_2', 'ext': 'js', 'content': null}],
-        'samples2': [{'title': 'Notebook_1', 'ext': 'js', 'content': null}],
-        'samples3': [],
+      'samples':{
+        'talo': [
+          {'title': 'Notebook_1', 'ext': 'js', 'content': null},
+          {'title': 'Notebook_1', 'ext': 'talo', 'content': null},
+          {'title': 'Notebook_1', 'ext': 'graph', 'content': null}
+        ],
       },
-      'talo2':{},
-      'talo3': {
-        'samples2': [{'title': 'Notebook_1', 'ext': 'js', 'content': null}]
-      }
-    },
-    'localhost:8881':{
-      'talo':{
-        'samples': [{'title': 'Notebook_1', 'ext': 'js', 'content': null}, {'title': 'Notebook_2', 'ext': 'js', 'content': null}],
-        'samples2': [{'title': 'Notebook_1', 'ext': 'js', 'content': null}],
-        'samples3': [],
-      },
-      'talo2':{},
-      'talo3': {
-        'samples2': [{'title': 'Notebook_1', 'ext': 'js', 'content': null}]
-      }
-    },
-
-    'localhost:8882':{
-      'talo':{
-        'samples': [{'title': 'Notebook_1', 'ext': 'js', 'content': null}, {'title': 'Notebook_2', 'ext': 'js', 'content': null}],
-        'samples2': [{'title': 'Notebook_1', 'ext': 'js', 'content': null}],
-        'samples3': [],
-      },
-      'talo2':{},
-      'talo3': {
-        'samples2': [{'title': 'Notebook_1', 'ext': 'js', 'content': null}]
-      }
-    },
-
-    'localhost:8883':{
-      'talo':{
-        'samples': [{'title': 'Notebook_1', 'ext': 'js', 'content': null}, {'title': 'Notebook_2', 'ext': 'js', 'content': null}],
-        'samples2': [{'title': 'Notebook_1', 'ext': 'js', 'content': null}],
-        'samples3': [],
-      },
-      'talo2':{},
-      'talo3': {
-        'samples2': [{'title': 'Notebook_1', 'ext': 'js', 'content': null}]
-      }
-    },
-
-    'localhost:8884':{
-      'talo':{
-        'samples': [{'title': 'Notebook_1', 'ext': 'js', 'content': null}, {'title': 'Notebook_2', 'ext': 'js', 'content': null}],
-        'samples2': [{'title': 'Notebook_1', 'ext': 'js', 'content': null}],
-        'samples3': [],
-      },
-      'talo2':{},
-      'talo3': {
-        'samples2': [{'title': 'Notebook_1', 'ext': 'js', 'content': null}]
-      }
-    },
+    }
+    // 'localhost:8888':{
+    //   'talo':{
+    //     'samples': [{'title': 'Notebook_1', 'ext': 'js', 'content': null}, {'title': 'Notebook_2', 'ext': 'js', 'content': null}],
+    //     'samples2': [{'title': 'Notebook_1', 'ext': 'js', 'content': null}],
+    //     'samples3': [],
+    //   },
+    //   'talo2':{},
+    //   'talo3': {
+    //     'samples2': [{'title': 'Notebook_1', 'ext': 'js', 'content': null}]
+    //   }
+    // },
+    // 'localhost:8881':{
+    //   'talo':{
+    //     'samples': [{'title': 'Notebook_1', 'ext': 'js', 'content': null}, {'title': 'Notebook_2', 'ext': 'js', 'content': null}],
+    //     'samples2': [{'title': 'Notebook_1', 'ext': 'js', 'content': null}],
+    //     'samples3': [],
+    //   },
+    //   'talo2':{},
+    //   'talo3': {
+    //     'samples2': [{'title': 'Notebook_1', 'ext': 'js', 'content': null}]
+    //   }
+    // },
+    //
+    // 'localhost:8882':{
+    //   'talo':{
+    //     'samples': [{'title': 'Notebook_1', 'ext': 'js', 'content': null}, {'title': 'Notebook_2', 'ext': 'js', 'content': null}],
+    //     'samples2': [{'title': 'Notebook_1', 'ext': 'js', 'content': null}],
+    //     'samples3': [],
+    //   },
+    //   'talo2':{},
+    //   'talo3': {
+    //     'samples2': [{'title': 'Notebook_1', 'ext': 'js', 'content': null}]
+    //   }
+    // },
+    //
+    // 'localhost:8883':{
+    //   'talo':{
+    //     'samples': [{'title': 'Notebook_1', 'ext': 'js', 'content': null}, {'title': 'Notebook_2', 'ext': 'js', 'content': null}],
+    //     'samples2': [{'title': 'Notebook_1', 'ext': 'js', 'content': null}],
+    //     'samples3': [],
+    //   },
+    //   'talo2':{},
+    //   'talo3': {
+    //     'samples2': [{'title': 'Notebook_1', 'ext': 'js', 'content': null}]
+    //   }
+    // },
+    //
+    // 'localhost:8884':{
+    //   'talo':{
+    //     'samples': [{'title': 'Notebook_1', 'ext': 'js', 'content': null}, {'title': 'Notebook_2', 'ext': 'js', 'content': null}],
+    //     'samples2': [{'title': 'Notebook_1', 'ext': 'js', 'content': null}],
+    //     'samples3': [],
+    //   },
+    //   'talo2':{},
+    //   'talo3': {
+    //     'samples2': [{'title': 'Notebook_1', 'ext': 'js', 'content': null}]
+    //   }
+    //},
 
   },
   'workspace': {
-    'pages': [],
-    'actived': -1
+    'panes': [{'pages': [], 'actived': null}],
+    'actived': 0
   },
   'user': {},
   'app': {
     'license': 'MIT',
     'loading': false,
     'error': false,
-    'resource': 'localhost:8888/talo/samples/Notebook_1.js'
+    'resource': 'localhost:8888/samples/talo/Notebook_1.js'
   }
 });
 
 function appReducer(state = initialState, action) {
 
-  let temporalState;
+  let temporalState, panesPath, panesActivedPath;
 
   switch (action.type) {
     // case LOAD_REPOS:
@@ -124,12 +135,33 @@ function appReducer(state = initialState, action) {
     //   return state
     //     .set('error', action.error)
     //     .set('loading', false);
+    case ACTIVE_PANE:
+      panesActivedPath = ['workspace', 'actived'];
+      return state.setIn(panesActivedPath, action.id);
+    case SPLIT_PANE:
+      panesPath = ['workspace', 'panes'];
+      panesActivedPath = ['workspace', 'actived'];
+      temporalState = state.setIn(panesPath, state.getIn(panesPath).push(fromJS({pages: [], actived: null})));
+      return temporalState.setIn(panesActivedPath, temporalState.getIn(panesPath).count()-1);
     case ADD_PAGE_TO_WORKSPACE:
-      const getPages = state.getIn(['workspace', 'pages']);
+      panesPath = ['workspace', 'panes'];
+      panesActivedPath = ['workspace', 'actived'];
+      const activedPane = state.getIn(panesPath).get(state.getIn(panesActivedPath));
+      const getPages = activedPane.get('pages');
       const pageIndex = getPages.findIndex(page => page.id === action.page.id);
-      if(pageIndex > -1) return state.setIn(['workspace', 'actived'], pageIndex);
-      temporalState = state.setIn(['workspace', 'pages'], getPages.push(action.page));
-      return temporalState.setIn(['workspace', 'actived'], temporalState.getIn(['workspace', 'pages']).count()-1);
+      let updatedActivedPane;
+      if(pageIndex > -1) updatedActivedPane = activedPane.set('actived', pageIndex);
+      else {
+        updatedActivedPane = activedPane.set('pages', getPages.push(action.page));
+        updatedActivedPane = updatedActivedPane.set('actived', getPages.count());
+      }
+      return state.setIn(panesPath, state.getIn(panesPath).set(state.getIn(panesActivedPath), updatedActivedPane));
+      //
+      // const getPages = state.getIn(['workspace', 'pages']);
+      // const pageIndex = getPages.findIndex(page => page.id === action.page.id);
+      // if(pageIndex > -1) return state.setIn(['workspace', 'actived'], pageIndex);
+      // temporalState = state.setIn(['workspace', 'pages'], getPages.push(action.page));
+      // return temporalState.setIn(['workspace', 'actived'], temporalState.getIn(['workspace', 'pages']).count()-1);
     case CHANGE_RESOURCE_SELECTED:
       return state.setIn(['app', 'resource'], action.resource);
     case ADD_RESOURCE:

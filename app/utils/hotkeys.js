@@ -6,6 +6,7 @@ export default {
   'MOVE_DOWN_FUZZY_FINDER': {keys:'down', default: true},
   'MOVE_UP_FUZZY_FINDER': {keys:'up', default: true},
   'EXIT_FUZZY_FINDER': {keys:'esc', default: true},
-  'ENTER_FUZZY_FINDER': {keys:'enter', default: true}
+  'ENTER_FUZZY_FINDER': {keys:'enter', default: true},
+  'SPLIT_WORKSPACE_VERTICALLY': {keys:'alt+v', default: false}
 
 }

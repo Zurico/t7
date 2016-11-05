@@ -96,6 +96,9 @@ class ResourcesTree extends React.Component {
   }
 
   render(){
+
+    console.log(this.props.valo);
+
     return (
       <div className={styles.container}>
         <div className={styles.global_scroller}>
@@ -144,7 +147,6 @@ class ResourcesTree extends React.Component {
               </div>)
             )}
           </div>
-          <div className={styles.tree_view_resizer}></div>
         </div>
       </div>
     );

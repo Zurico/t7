@@ -16,8 +16,8 @@
  */
 
 import {
-  SPLIT_PANE
-} from 'containers/App/constants';
+  CHANGE_USERNAME,
+} from './constants';
 
 /**
  * Changes the input field of the form
@@ -26,8 +26,9 @@ import {
  *
  * @return {object}    An action object with a type of CHANGE_USERNAME
  */
-export function splitPane() {
+export function changeUsername(name) {
   return {
-    type: SPLIT_PANE
+    type: CHANGE_USERNAME,
+    name,
   };
 }

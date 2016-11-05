@@ -14,20 +14,20 @@
  *        return { type: YOUR_ACTION_CONSTANT, var: var }
  *    }
  */
+ import {
+   ACTIVE_PANE,
+ } from 'containers/App/constants';
 
-import {
-  SPLIT_PANE
-} from 'containers/App/constants';
-
-/**
- * Changes the input field of the form
- *
- * @param  {name} name The new text of the input field
- *
- * @return {object}    An action object with a type of CHANGE_USERNAME
- */
-export function splitPane() {
-  return {
-    type: SPLIT_PANE
-  };
-}
+ /**
+  * Changes the input field of the form
+  *
+  * @param  {name} name The new text of the input field
+  *
+  * @return {object}    An action object with a type of CHANGE_USERNAME
+  */
+ export function activePane(id) {
+   return {
+     type: ACTIVE_PANE,
+     id,
+   };
+ }

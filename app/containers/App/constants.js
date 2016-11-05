@@ -15,3 +15,5 @@ export const LOAD_REPOS_ERROR = 'boilerplate/App/LOAD_REPOS_ERROR';
 export const CHANGE_RESOURCE_SELECTED = 'talo/App/CHANGE_RESOURCE_SELECTED';
 export const ADD_RESOURCE = 'talo/App/ADD_RESOURCE';
 export const ADD_PAGE_TO_WORKSPACE = 'talo/App/ADD_PAGE_TO_WORKSPACE';
+export const SPLIT_PANE = 'talo/App/SPLIT_PANE';
+export const ACTIVE_PANE = 'talo/App/ACTIVE_PANE';

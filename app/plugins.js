@@ -4,5 +4,9 @@
 // about the code splitting business
 import * as Register from 'utils/register';
 import setupNotebookJS from 'containers/NotebookJS/setup';
+import setupNotebookTalo from 'containers/NotebookTalo/setup';
+import setupNotebookGraph from 'containers/NotebookGraph/setup';
 
 setupNotebookJS(Register);
+setupNotebookTalo(Register);
+setupNotebookGraph(Register);

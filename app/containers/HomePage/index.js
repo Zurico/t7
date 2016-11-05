@@ -12,6 +12,7 @@ import Octicon from 'react-octicon';
 import Logo from 'components/Logo';
 import styles from './styles.css';
 import messages from './messages';
+import {platformKeySymbols} from 'utils/helper';
 
 export class WorkSpacePage extends React.Component {
 
@@ -32,7 +33,7 @@ export class WorkSpacePage extends React.Component {
               <li className={styles.message}>
                 <FormattedMessage {...messages.availableOptions} />
                 {/*<span className={styles.keystroke}>⌘H</span>*/}
-                <span className={styles.keystroke}>⌥C</span>
+                <span className={styles.keystroke}>{platformKeySymbols(0)}C</span>
               </li>
             </ul>
           </div>
