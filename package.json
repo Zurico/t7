@@ -118,7 +118,8 @@
       "express",
       "ip",
       "minimist",
-      "sanitize.css"
+      "sanitize.css",
+      "react-octicon"
     ],
     "include": [
       "core-js",
