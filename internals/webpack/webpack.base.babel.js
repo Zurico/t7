@@ -25,7 +25,7 @@ module.exports = (options) => ({
     }, {
       // Transform our own .css files with PostCSS and CSS-modules
       test: /\.css$/,
-      exclude: [/node_modules/, /Editor[\/|\\]theme/],
+      exclude: [/node_modules/, /Editor[\/|\\]theme/, /CommandPanel[\/|\\]theme/],
       loader: options.cssLoaders,
     }, {
       // Do not transform vendor's CSS with CSS-modules
@@ -34,7 +34,7 @@ module.exports = (options) => ({
       // they will be a part of our compilation either way.
       // So, no need for ExtractTextPlugin here.
       test: /\.css$/,
-      include: [/node_modules/, /Editor[\/|\\]theme/],
+      include: [/node_modules/, /Editor[\/|\\]theme/, /CommandPanel[\/|\\]theme/],
       loaders: ['style-loader', 'css-loader'],
     }, {
       test: /\.(eot|svg|ttf|woff|woff2)$/,

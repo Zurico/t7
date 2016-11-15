@@ -56,10 +56,9 @@
   margin-left: 15px;
   transition: color .5s ease-in-out;
   color:rgba(163, 168, 174, 0.3);
+  cursor: pointer;
 }
 
 .keystroke:hover {
-  transition: color .5s ease-in-out;
   color:rgba(163, 168, 174, 0.5);
-  cursor: pointer;
 }

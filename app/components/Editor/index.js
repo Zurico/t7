@@ -13,7 +13,7 @@ import styles from './styles.css';
 import HotKeys from 'utils/hotkeys';
 import JSONTree from 'react-json-tree';
 import _ from 'lodash';
-import * as sdk from 'sdk'; //rx, ramda, superagent, evetnsource, url, events, loglevel
+//import * as sdk from 'sdk'; //rx, ramda, superagent, evetnsource, url, events, loglevel
 
 class Editor extends React.Component {
 
@@ -85,7 +85,7 @@ class Editor extends React.Component {
 
     }
 
-    return Function.apply(null, ['render', 'sdk'].concat(notebookContent))(render, sdk.networking);
+    return Function.apply(null, ['render'].concat(notebookContent))(render);
 
   }
 

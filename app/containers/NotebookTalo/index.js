@@ -14,15 +14,17 @@ import { selectValo } from 'components/ResourcesTree/selectors';
 import * as Resources from 'utils/resources';
 // https://github.com/primer/octicons/tree/v2.1.2
 import Octicon from 'react-octicon';
-import Editor from 'components/Editor';
+import EditorTalo from 'components/EditorTalo';
 
-class NotebookTalo extends React.Component {
+class NotebookJS extends React.Component {
 
   shouldComponentUpdate(){
     return false;
   }
 
   render() {
+
+  const taloDefaultDocument = [{element:'text'}];
 
     return (
       <div>
@@ -32,7 +34,10 @@ class NotebookTalo extends React.Component {
             { name: 'description', content: 'Talo Notebook Page' },
           ]}
         />
-      <p>This is a talo extension</p>
+        <EditorTalo
+          className="talo-editor"
+          codeText={Resources.getNotebookContent(this.props.valo, this.props.meta) || taloDefaultDocument}
+        />
       </div>
     );
   }
@@ -43,4 +48,4 @@ const mapStateToProps = createStructuredSelector({
 });
 
 // Wrap the component to inject dispatch and state into it
-export default connect(mapStateToProps)(NotebookTalo);
+export default connect(mapStateToProps)(NotebookJS);
