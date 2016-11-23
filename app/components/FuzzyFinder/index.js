@@ -116,6 +116,7 @@ class FuzzyFinder extends React.Component {
                 <li key={item.value}
                     className={`${item.marked ? styles.actived : ''} ${this.state.selected == pos ? styles.selected : ''}`}
                     rel={pos}>
+                    {item.hint ? <div className={styles.hint_container}><kbd className={styles.hint}>{item.hint}</kbd></div> : null}
                     <FormattedMessage id={item.title} />
                 </li>), <li className={`${styles.no_results} no-select`}><FormattedMessage {...this.state.noMatchesText} /></li>)
             }

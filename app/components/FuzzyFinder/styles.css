@@ -161,3 +161,24 @@
 .text_editor::selection {
   background: var(--inputTextSelectedColor);
 }
+
+.hint_container {
+  float: right;
+}
+
+.hint {
+  margin-top: -1px;
+  margin-left: 0.75em;
+  margin-right: calc(-0.5em + 1px);
+  display: inline-block;
+  margin-left: 0.45454545em;
+  padding: 0 0.375em;
+  line-height: 2;
+  font-family: inherit;
+  font-size: 1em;
+  letter-spacing: 0.1em;
+  border-radius: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(0, 0, 0, 0.2);
+  color: #d7dae0;
+}

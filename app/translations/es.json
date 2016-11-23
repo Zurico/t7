@@ -1,5 +1,10 @@
 [
   {
+    "id": "talo.containers.App.actions.change_lang",
+    "defaultMessage": "Cambiar Idioma",
+    "message": "Cambiar Idioma"
+  },
+  {
     "id": "talo.containers.WorkSpacePage.tips.all",
     "defaultMessage": "Descubra todas las opciones disponibles con",
     "message": "Descubra todas las opciones disponibles con"
