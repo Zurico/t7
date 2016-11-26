@@ -22,6 +22,7 @@
     "prebuild": "npm run build:clean && npm run test",
     "build": "cross-env NODE_ENV=production webpack --config internals/webpack/webpack.prod.babel.js --color -p",
     "deploy": "cross-env NODE_ENV=production webpack --config internals/webpack/webpack.prod.babel.js --color -p",
+    "deploy:desktop": "cross-env NODE_ENV=desktop webpack --config internals/webpack/webpack.desktop.babel.js --color -p",
     "build:clean": "npm run test:clean && rimraf ./build",
     "build:dll": "node ./internals/scripts/dependencies.js",
     "start": "cross-env NODE_ENV=development node server",
@@ -48,7 +49,9 @@
     "test:firefox": "npm run test -- --browsers Firefox",
     "test:safari": "npm run test -- --browsers Safari",
     "test:ie": "npm run test -- --browsers IE",
-    "coveralls": "cat ./coverage/lcov/lcov.info | coveralls"
+    "coveralls": "cat ./coverage/lcov/lcov.info | coveralls",
+    "package": "npm run deploy:desktop && build --publish never",
+    "desktop": "electron internals/desktop"
   },
   "lint-staged": {
     "*.js": "lint:eslint",
@@ -190,6 +193,8 @@
     "cheerio": "0.22.0",
     "coveralls": "2.11.12",
     "css-loader": "0.25.0",
+    "electron": "^1.4.8",
+    "electron-builder": "^8.6.0",
     "enzyme": "2.4.1",
     "eslint": "3.5.0",
     "eslint-config-airbnb": "11.1.0",
@@ -240,5 +245,44 @@
     "webpack": "2.1.0-beta.22",
     "webpack-dev-middleware": "1.7.0",
     "webpack-hot-middleware": "2.12.2"
+  },
+  "build": {
+    "appId": "org.zuri.Talo",
+    "category": "public.app-category.tools",
+    "dmg": {
+      "contents": [
+        {
+          "x": 410,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        },
+        {
+          "x": 130,
+          "y": 150,
+          "type": "file"
+        }
+      ]
+    },
+    "files": [
+      "**/*"
+    ],
+    "win": {
+      "target": "nsis"
+    },
+    "linux": {
+      "target": [
+        "deb",
+        "AppImage"
+      ]
+    }
+  },
+  "directories": {
+    "buildResources": "internals/desktop/resources",
+    "output": "dist",
+    "app": "internals/desktop"
+  },
+  "bin": {
+    "electron": "./node_modules/.bin/electron"
   }
 }

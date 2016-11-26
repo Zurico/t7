@@ -16,7 +16,7 @@ export default function createRoutes(store) {
   // create reusable async injectors using getAsyncInjectors factory
   const { injectReducer, injectSagas } = getAsyncInjectors(store);
 
-  return [
+  const routes = [
     // {
     //   path: '/',
     //   onEnter: (nextState, replace) => replace('/ws')
@@ -103,4 +103,7 @@ export default function createRoutes(store) {
       },
     },
   ];
+  //@todo this is just to check if running in electron or not (remove if it should go in a differetn file)
+  if(process.env.NODE_ENV === 'desktop') routes.pop();
+  return routes;
 }

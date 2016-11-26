@@ -1,6 +1,8 @@
 # Don't check auto-generated stuff into git
 coverage
 build
+release
+dist
 node_modules
 stats.json
 
@@ -11,3 +13,4 @@ npm-debug.log
 
 # Remove this - temporal
 app/sdk
+internals/desktop/app.html

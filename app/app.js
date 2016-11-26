@@ -19,7 +19,7 @@ import 'file?name=[name].[ext]!./.htaccess';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { applyRouterMiddleware, Router, Route, Redirect, browserHistory } from 'react-router';
+import { applyRouterMiddleware, Router, Route, Redirect, browserHistory, hashHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import FontFaceObserver from 'fontfaceobserver';
 import { useScroll } from 'react-router-scroll';
@@ -48,7 +48,9 @@ import { translationMessages } from './i18n';
 // Optionally, this could be changed to leverage a created history
 // e.g. `const browserHistory = useRouterHistory(createBrowserHistory)();`
 const initialState = {};
-const store = configureStore(initialState, browserHistory);
+//@todo this is just to check if running in electron or not (remove if it should go in a differetn file)
+const historyType = process.env.NODE_ENV === 'desktop' ? hashHistory : browserHistory;
+const store = configureStore(initialState, historyType);
 
 // If you use Redux devTools extension, since v2.0.1, they added an
 // `updateStore`, so any enhancers that change the store object
@@ -63,7 +65,7 @@ if (window.devToolsExtension) {
 // is under the non-default key ("routing"), selectLocationState
 // must be provided for resolving how to retrieve the "route" in the state
 import { selectLocationState } from 'containers/App/selectors';
-const history = syncHistoryWithStore(browserHistory, store, {
+const history = syncHistoryWithStore(historyType, store, {
   selectLocationState: selectLocationState(),
 });
 

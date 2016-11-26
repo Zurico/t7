@@ -1,0 +1,15 @@
+{
+  "name": "Talo",
+  "productName": "Talo",
+  "version": "1.0.0",
+  "description": "Talo description",
+  "main": "./main.js",
+  "author": {
+    "name": "Zuri Pabon",
+    "email": "zurisadai.pabon@gmail.com",
+    "url": "https://github.com/tsur"
+  },
+  "license": "MIT",
+  "dependencies": {
+  }
+}
