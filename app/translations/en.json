@@ -1,5 +1,20 @@
 [
   {
+    "id": "talo.containers.App.actions.split_workspace",
+    "defaultMessage": "Split workspace vertically",
+    "message": "Split workspace vertically"
+  },
+  {
+    "id": "talo.containers.App.actions.add_notebook",
+    "defaultMessage": "Add new resource",
+    "message": "Add new resource"
+  },
+  {
+    "id": "talo.containers.App.actions.open_notebook",
+    "defaultMessage": "Open notebook",
+    "message": "Open notebook"
+  },
+  {
     "id": "talo.containers.App.actions.change_lang",
     "defaultMessage": "Change Language",
     "message": "Change Language"
@@ -36,13 +51,13 @@
   },
   {
     "id": "talo.components.HelperTour.tree.message",
-    "defaultMessage": "Use the options up",
-    "message": "Use the options up"
+    "defaultMessage": "From this area, you may open your notebooks. Remember to sync them in Valo if requiring persistency over time",
+    "message": "From this area, you may open your notebooks. Remember to sync them in Valo if requiring persistency over time"
   },
   {
     "id": "talo.components.HelperTour.footer.left.message",
-    "defaultMessage": "Use the options down",
-    "message": "Use the options down"
+    "defaultMessage": "Panel below displays current notebook title including its extension, each of which will let you use a notebook in a unique, featured approach. Set up more extensions by installing new packages",
+    "message": "Panel below displays current notebook title including its extension, each of which will let you use a notebook in a unique, featured approach. Set up more extensions by installing new packages"
   },
   {
     "id": "talo.components.HelperTour.footer.right.message",

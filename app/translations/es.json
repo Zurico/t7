@@ -1,5 +1,20 @@
 [
   {
+    "id": "talo.containers.App.actions.split_workspace",
+    "defaultMessage": "Dividir espacio de trabajo verticalmente",
+    "message": "Dividir espacio de trabajo verticalmente"
+  },
+  {
+    "id": "talo.containers.App.actions.open_notebook",
+    "defaultMessage": "Abrir Notebok",
+    "message": "Abrir Notebook"
+  },
+  {
+    "id": "talo.containers.App.actions.add_notebook",
+    "defaultMessage": "Añadir Recurso",
+    "message": "Añadir Recurso"
+  },
+  {
     "id": "talo.containers.App.actions.change_lang",
     "defaultMessage": "Cambiar Idioma",
     "message": "Cambiar Idioma"

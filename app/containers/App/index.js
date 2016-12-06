@@ -46,7 +46,13 @@ class App extends React.Component {
   openFuzzyFinder(){
     // Request the fuzzy finder
     PubSub.publish(PubSub.topics.FUZZY_FINDER_REQUIRED, {
-      items: [{value: HotKeys.CHANGE_LANG.keys, title: 'talo.containers.App.actions.change_lang', hint: HotKeys.CHANGE_LANG.keys}],
+      items: [
+        {value: HotKeys.CHANGE_LANG.keys, title: 'talo.containers.App.actions.change_lang', hint: HotKeys.CHANGE_LANG.keys},
+        {value: HotKeys.ADD_NOTEBOOK.keys, title: 'talo.containers.App.actions.add_notebook', hint: HotKeys.ADD_NOTEBOOK.keys},
+        {value: HotKeys.OPEN_NOTEBOOK.keys, title: 'talo.containers.App.actions.open_notebook', hint: HotKeys.OPEN_NOTEBOOK.keys},
+        {value: HotKeys.SPLIT_WORKSPACE_VERTICALLY.keys, title: 'talo.containers.App.actions.split_workspace', hint: HotKeys.SPLIT_WORKSPACE_VERTICALLY.keys},
+
+      ],
       topic: PubSub.topics.ACTION_SELECTED
     });
   }
