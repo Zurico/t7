@@ -193,7 +193,7 @@
     "cheerio": "0.22.0",
     "coveralls": "2.11.12",
     "css-loader": "0.25.0",
-    "electron": "^1.4.8",
+    "electron": "^9.1.0",
     "electron-builder": "^8.6.0",
     "enzyme": "2.4.1",
     "eslint": "3.5.0",
